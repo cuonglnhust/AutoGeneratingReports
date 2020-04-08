@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoGeneratingReports.ViewModel
 {
-    class MainWindowViewModel: ObservableObject
+    public class MainWindowViewModel: ObservableObject
     {
          
     }

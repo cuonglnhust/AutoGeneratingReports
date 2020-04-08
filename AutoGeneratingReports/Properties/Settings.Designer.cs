@@ -26,5 +26,138 @@ namespace AutoGeneratingReports.Properties
                 return defaultInstance;
             }
         }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string InputFolder
+        {
+            get
+            {
+                return ((string)(this["InputFolder"]));
+            }
+            set
+            {
+                this["InputFolder"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string OutputFolderAM
+        {
+            get
+            {
+                return ((string)(this["OutputFolderAM"]));
+            }
+            set
+            {
+                this["OutputFolderAM"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string State
+        {
+            get
+            {
+                return ((string)(this["State"]));
+            }
+            set
+            {
+                this["State"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Username
+        {
+            get
+            {
+                return ((string)(this["Username"]));
+            }
+            set
+            {
+                this["Username"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OutputFolderAV
+        {
+            get
+            {
+                return ((string)(this["OutputFolderAV"]));
+            }
+            set
+            {
+                this["OutputFolderAV"] = value;
+            }
+        }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=SafenetLocal;User ID=sa;Password=123456")]
+        public string SafenetLocalConnectionString
+        {
+            get
+            {
+                return ((string)(this["SafenetLocalConnectionString"]));
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.4")]
+        public string Version
+        {
+            get
+            {
+                return ((string)(this["Version"]));
+            }
+            set
+            {
+                this["Version"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public string NoMachine
+        {
+            get
+            {
+                return ((string)(this["NoMachine"]));
+            }
+            set
+            {
+                this["NoMachine"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("vi-VN")]
+        public string Language
+        {
+            get
+            {
+                return ((string)(this["Language"]));
+            }
+            set
+            {
+                this["Language"] = value;
+            }
+        }
     }
 }
