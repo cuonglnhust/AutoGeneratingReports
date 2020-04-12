@@ -19,28 +19,27 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Ribbon Background="LightGray" x:Name="RibbonWin"  SelectedIndex="0" Margin="0,0,-0.4,0" Height="150" VerticalAlignment="Top" Grid.RowSpan="1">
-                <RibbonTab ItemsSource="{Binding TabAeonMall}" Height="110" x:Name="TabAeonMall" Header="AEON MALL" KeyTip="H" >
-                    <!-- Home/Clipboard group-->
-                    <RibbonGroup x:Name="XuatBaoCaoAeonMall">
-                        <RibbonButton Command="{Binding ExportAeonMall}" LargeImageSource="Images\Login\Export1.png" Label="Chiết xuất báo cáo" KeyTip="V">
-                            <!--<RibbonMenuItem ImageSource="Images\Login\User.png" Header="Keep Text Only" KeyTip="T"/>
+            <Ribbon ItemsSource="{Binding tabs}" Background="LightGray" x:Name="RibbonWin" SelectedIndex ="-1" Margin="0,0,-0.4,0" Height="150" VerticalAlignment="Top" Grid.RowSpan="1" SelectionChanged="RibbonWin_SelectionChanged">
+                <RibbonTab ItemsSource="{Binding TabAeonMall}" Height="110" x:Name="TabAeonMall" Header="AEON MALL" KeyTip="H">
+                            <RibbonGroup x:Name="XuatBaoCaoAeonMall">
+                                <RibbonButton Command="{Binding ExportAeonMall}" LargeImageSource="Images\Login\Export1.png" Label="Chiết xuất báo cáo" KeyTip="V">
+                                    <!--<RibbonMenuItem ImageSource="Images\Login\User.png" Header="Keep Text Only" KeyTip="T"/>
                         <RibbonMenuItem ImageSource="Images\Login\User.png" Header="Paste Special..." KeyTip="S"/>-->
-                        </RibbonButton>
-                    </RibbonGroup>
-                    <RibbonGroup x:Name="SinhBangKiemQuyTongAM">
-                        <RibbonButton LargeImageSource="Images\Login\List.png" Label="Sinh bảng kiểm quỹ tổng" KeyTip="V"/>
-                    </RibbonGroup>
-                    <RibbonGroup x:Name="SinhBangKiemQuyChoTungNguoiAM">
-                        <RibbonButton LargeImageSource="Images\Login\Chart.png" Label="Sinh bảng kiểm quỹ cho từng người kiểm đếm" KeyTip="V"/>
-                    </RibbonGroup>
-                    <!-- Home/Colors group-->
-                    <RibbonGroup x:Name="SaoChepAeonMall">
-                        <RibbonButton LargeImageSource="Images\Login\Copy.png" Label="Sao chép từ cột sau kiểm kê đến cột khai báo" KeyTip="V"/>
-                    </RibbonGroup>
-                    <RibbonGroup x:Name="XoaTatCaDauKiemTra">
-                        <RibbonButton LargeImageSource="Images\Login\Reset.png" Label="Xóa tất cả dấu kiểm tra" KeyTip="V"/>
-                    </RibbonGroup>
+                                </RibbonButton>
+                            </RibbonGroup>
+                            <RibbonGroup x:Name="SinhBangKiemQuyTongAM">
+                                <RibbonButton LargeImageSource="Images\Login\List.png" Label="Sinh bảng kiểm quỹ tổng" KeyTip="V"/>
+                            </RibbonGroup>
+                            <RibbonGroup x:Name="SinhBangKiemQuyChoTungNguoiAM">
+                                <RibbonButton LargeImageSource="Images\Login\Chart.png" Label="Sinh bảng kiểm quỹ cho từng người kiểm đếm" KeyTip="V"/>
+                            </RibbonGroup>
+                            <!-- Home/Colors group-->
+                            <RibbonGroup x:Name="SaoChepAeonMall">
+                                <RibbonButton LargeImageSource="Images\Login\Copy.png" Label="Sao chép từ cột sau kiểm kê đến cột khai báo" KeyTip="V"/>
+                            </RibbonGroup>
+                            <RibbonGroup x:Name="XoaTatCaDauKiemTra">
+                                <RibbonButton LargeImageSource="Images\Login\Reset.png" Label="Xóa tất cả dấu kiểm tra" KeyTip="V"/>
+                            </RibbonGroup>
                     <RibbonGroup Width="160">
                         <TextBlock>Từ ngày bán hàng</TextBlock>
                         <DatePicker SelectedDate="{Binding StartDate}" Height="25" Width="150"></DatePicker>
@@ -50,8 +49,10 @@
                     <RibbonGroup x:Name="XuatDuLieuMall">
                         <RibbonButton Command="{Binding btnXuatDuLieu}" LargeImageSource="Images\Login\Process2.png" Label="Truy xuât dữ liệu" KeyTip="V"></RibbonButton>
                     </RibbonGroup>
+                    <!-- Home/Clipboard group-->
+                   
                 </RibbonTab>
-                <RibbonTab ItemsSource="{Binding TabAeonVN}" Height="110" Header="AEON VN" KeyTip="H">
+                <RibbonTab  ItemsSource="{Binding TabAeonVN}" Height="110" Header="AEON VN" KeyTip="H">
                     <RibbonGroup x:Name="XuatBaoCaoAeonVn">
                         <RibbonButton LargeImageSource="Images\Login\Export1.png" Label="Chiết xuất báo cáo" KeyTip="V"/>
                     </RibbonGroup>
@@ -77,13 +78,13 @@
                         <RibbonButton LargeImageSource="Images\Login\Process2.png" Label="Truy xuât dữ liệu" KeyTip="V"></RibbonButton>
                     </RibbonGroup>
                 </RibbonTab>
-                <RibbonTab ItemsSource="{Binding TabCaiDat}" Header="CÀI ĐẶT" KeyTip="H"/>
-                <RibbonTab ItemsSource="{Binding TabQuanLyNguoiDung}" Header="QUẢN LÝ NGƯỜI DÙNG" KeyTip="H">
+                <RibbonTab  ItemsSource="{Binding TabCaiDat}" Header="CÀI ĐẶT" KeyTip="H"/>
+                <RibbonTab  ItemsSource="{Binding TabQuanLyNguoiDung}" Header="QUẢN LÝ NGƯỜI DÙNG" KeyTip="H">
                     <RibbonGroup x:Name="DSNguoiDung">
                         <RibbonButton x:Name="DanhSachNguoiDung" LargeImageSource="Images\Login\ListUser.png" Label="Danh sách người dùng" KeyTip="V"/>
                     </RibbonGroup>
                 </RibbonTab>
-                <RibbonTab Header="CSDL KHÁCH HÀNG" KeyTip="H">
+                <RibbonTab  Header="CSDL KHÁCH HÀNG" KeyTip="H">
                     <RibbonGroup >
                         <RibbonButton x:Name="DsQuayAv" LargeImageSource="Images\Login\Shop1.png" Label="Danh sách quầy AV" KeyTip="V"/>
                     </RibbonGroup>
@@ -106,7 +107,7 @@
             <StackPanel Height="25" Grid.Row="1" Background="Aqua"></StackPanel>
         </DataGrid>-->
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Name="GridAeonMall">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -119,13 +120,52 @@
                     <TextBlock Text="{Binding Content, RelativeSource=
                                          {RelativeSource Mode=TemplatedParent}}"/>
 
-                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  x:Name="txtTimKiem" Width="200" Height="30"/>
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
                     <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
                     <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <DataGrid ItemsSource="{Binding DataTable}" x:Name="dg" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
+                <DataGrid ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Thiết bị" Binding="{Binding ThietBi}"/>
+                        <DataGridTextColumn Header="Ngày nộp túi" Binding="{Binding NgayNopTui}"/>
+                        <DataGridTextColumn Header="Ngày bán hàng" Binding="{Binding NgayBanHang}"/>
+                        <DataGridTextColumn Header="Mã cửa hàng" Binding="{Binding MaCuaHang}"/>
+                        <DataGridTextColumn Header="Tên cửa hàng" Binding="{Binding TenCuaHang}"/>
+                        <DataGridTextColumn Header="Mã vạch" Binding="{Binding MaVach}"/>
+                        <DataGridTextColumn Header="Số tiền theo bảng kê" Binding="{Binding SoTienTheoBangKe}"/>
+                        <DataGridTextColumn Header="Thành tiền sau kiểm kê" Binding="{Binding ThanhTienSauKiemKe}"/>
+                        <DataGridTextColumn Header="Tiền giả" Binding="{Binding TienGia}"/>
+                        <DataGridTextColumn Header="Tiền không hợp lệ" Binding="{Binding TienKhongHopLe}"/>
+                        <DataGridTextColumn Header="Người kiểm đếm" Binding="{Binding NguoiKiemDem}"/>
+                        <DataGridTextColumn Header="Cập nhật gần nhất" Binding="{Binding CapNhatGanNhat}"/>
+                        <DataGridTextColumn Header="Thời gian cập nhật" Binding="{Binding ThoiGianCapNhat}"/>
+                        <DataGridTextColumn Header="Đã kiểm tra" Binding="{Binding CheckKiemTra}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Name="GridAeonVN" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
+                    <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
+                    <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <DataGrid ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Thiết bị" Binding="{Binding ThietBi}"/>
                         <DataGridTextColumn Header="Ngày nộp túi" Binding="{Binding NgayNopTui}"/>

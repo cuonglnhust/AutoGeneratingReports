@@ -27,6 +27,36 @@ namespace AutoGeneratingReports
             InitializeComponent();
         }
 
+        private void RibbonWin_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var indexer = RibbonWin.SelectedIndex;
+            if(indexer == 0)
+            {
+                GridAeonMall.Visibility = Visibility.Visible;
+                GridAeonVN.Visibility = Visibility.Hidden;
+            }
+
+            if(indexer == 1)
+            {
+                GridAeonMall.Visibility = Visibility.Hidden;
+                GridAeonVN.Visibility = Visibility.Visible;
+            }
+            if(indexer == 2)
+            {
+                GridAeonMall.Visibility = Visibility.Hidden;
+                GridAeonVN.Visibility = Visibility.Hidden;
+            }
+            if (indexer == 3)
+            {
+                GridAeonMall.Visibility = Visibility.Hidden;
+                GridAeonVN.Visibility = Visibility.Hidden;
+            }
+            if (indexer == 4)
+            {
+                GridAeonMall.Visibility = Visibility.Hidden;
+                GridAeonVN.Visibility = Visibility.Hidden;
+            }
+        }
        
     }
 }
