@@ -1,4 +1,5 @@
 ﻿using AutoGeneratingReports.ViewModel;
+using AutoGenReport.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,12 @@ namespace AutoGeneratingReports
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly AutoGenReportDbContext _DbContext;
+        public MainWindow(AutoGenReportDbContext dbContext )
         {
-            DataContext = new MainWindowViewModel();
+            
+            _DbContext = dbContext;        
+            DataContext = new MainWindowViewModel(_DbContext);           
             InitializeComponent();
         }
 

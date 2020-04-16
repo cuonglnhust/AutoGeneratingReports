@@ -1,0 +1,92 @@
+﻿<Window x:Class="AutoGeneratingReports.DSNguoiDamSatAV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:local="clr-namespace:AutoGeneratingReports"
+        mc:Ignorable="d"
+        Title="Danh sách người giám sát Aeon Mall Việt Nam " Height="450" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="LightGray" Margin="10" Height="40"  Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
+                <xctk:IconButton.Icon>
+                    <Image Source="Images\Login\add-button.png"/>
+                </xctk:IconButton.Icon>
+                Thêm mới
+            </xctk:IconButton>
+            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+                <xctk:IconButton.Icon>
+                    <Image Margin="5" Source="Images\Login\Delete.png"/>
+                </xctk:IconButton.Icon>
+                Xóa
+            </xctk:IconButton>
+            <xctk:IconButton Command="{Binding btnLuu}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
+                <xctk:IconButton.Icon>
+                    <Image Margin="5" Source="Images\Login\Saving.png"/>
+                </xctk:IconButton.Icon>
+                Lưu lại
+            </xctk:IconButton>
+            <xctk:IconButton Command="{Binding btnXuatTxt}" Grid.Column="3" HorizontalAlignment="Left" Width="140">
+                <xctk:IconButton.Icon>
+                    <Image Margin="5" Source="Images\Login\Export.png"/>
+                </xctk:IconButton.Icon>
+                Xuất Txt File
+            </xctk:IconButton>
+        </Grid>
+
+        <Grid Grid.Row="1" Name="GridAeonMall">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
+                    <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
+                    <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Width="Auto">
+                <DataGrid Grid.ColumnSpan="2" ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
+                    <DataGrid.Columns >
+                        <!--<DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" />-->
+
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Width="*"  Header="Số thứ tự" Binding="{Binding SoThuTu}"/>
+                        <DataGridTextColumn Width="*"  Header="Mã" Binding="{Binding MaCode}"/>
+                        <DataGridTextColumn Width="*"  Header="Tên người giám sát" Binding="{Binding TenNguoiGiamSat}"/>
+                        <DataGridTextColumn Width="*"  Header="Ngày đăng kí" Binding="{Binding NgayDangKi}"/>
+                        <DataGridTextColumn Width="*"  Header="Ghi chú" Binding="{Binding GhiChu}"/>
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -48,7 +48,7 @@
                 </PasswordBox>
             </StackPanel>
         </Grid>
-        <Button Width="120" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="49,0,0,87" Content="Đăng nhập" Background="Green" Command="{Binding btn_DangNhap}" Name="btnLogin" IsDefault="True" CommandParameter="{Binding ElementName=Login}"/>
+        <Button Width="120" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="49,0,0,87" Content="Đăng nhập" Background="Green"  Command="{Binding btn_DangNhap}" Name="btnLogin" IsDefault="True" CommandParameter="{Binding ElementName=Login}"/>
         <Button Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,44.4,87" Content="Thoát" Background="Red" Command="{Binding btn_Thoat}"/>
         <TextBlock Text="Chưa có tài khoản?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand"/>
         <Image Source="Assets/home.png" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>

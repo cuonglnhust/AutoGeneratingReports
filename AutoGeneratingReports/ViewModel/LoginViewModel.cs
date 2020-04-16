@@ -24,7 +24,7 @@ namespace AutoGeneratingReports.ViewModel
         public Action CloseAction { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand btn_Thoat { get; set; }
-        public ICommand btn_DangNhap { get; private set; }
+        public ICommand btn_DangNhap { get; private set; }      
         public string TaiKhoan
         {
             get { return _TaiKhoan; }
@@ -47,6 +47,7 @@ namespace AutoGeneratingReports.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
             this.btn_DangNhap = new RelayCommand<Window>((p) => { return true; }, (p) => { DangNhap(p); });
             btn_Thoat = new RelayCommand<Window>((p) => { return true; }, (p) => { CloseWindow(p); });
+            
         }
 
         private void CloseWindow(Window window)
@@ -72,7 +73,7 @@ namespace AutoGeneratingReports.ViewModel
                 if (IsCurrentUserCredentialsValid)
                 {
                     State = AppState.Autorized;
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(_context);
                     CloseAction();
                     mainWindow.Show();
                     
@@ -88,7 +89,7 @@ namespace AutoGeneratingReports.ViewModel
                 }
                 Properties.Settings.Default.State = State.ToString();
                 Properties.Settings.Default.Username = CurrentUser.Login;
-                //Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save();
             }
             catch (Exception ex)
             {

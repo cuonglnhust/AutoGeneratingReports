@@ -29,6 +29,7 @@ namespace AutoGeneratingReports
         private readonly AutoGenReportDbContext _DbContext;
         public LoginWindow()
         {
+            
             LoginViewModel VM  = new LoginViewModel(_DbContext);
             this.DataContext = VM;
             if (VM.CloseAction == null)
