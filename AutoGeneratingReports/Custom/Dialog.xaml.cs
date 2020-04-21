@@ -47,12 +47,7 @@ namespace AutoGeneratingReports.Custom
 
         /// <summary>
         /// Vị trí xuất hiện cửa sổ
-        /// </summary>
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Left = Owner.Left + Owner.Width / 2 - Width / 2;
-            Top = this.Owner.Top + Owner.Height / 2 - Height / 2;
-        }
+        /// </summary>       
 
         /// <summary>
         /// Di chuyển cửa sổ

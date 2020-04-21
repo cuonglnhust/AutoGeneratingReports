@@ -11,7 +11,7 @@
         Title="Login" Height="500" Width="350" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        
+        Icon="\Images\Login\Logo.png"
         WindowStyle="None" 
         FontFamily="Segoe UI Emoji">
     <Grid>

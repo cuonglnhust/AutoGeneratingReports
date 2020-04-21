@@ -10,7 +10,9 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"      
         >
-    
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Login/Background.png"/>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

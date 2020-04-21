@@ -7,7 +7,11 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"        
         Title="Quản lý khách hàng Aeon Mall" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Login/Background.png"/>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,7 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Background="LightGray" Margin="10" Height="40"  Grid.Row="0">
+        <Grid Margin="10" Height="40"  Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"></ColumnDefinition>
                 <ColumnDefinition Width="100"></ColumnDefinition>
