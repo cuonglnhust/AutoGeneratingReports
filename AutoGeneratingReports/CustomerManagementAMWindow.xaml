@@ -8,16 +8,14 @@
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"        
-        Title="Quản lý khách hàng Aeon Mall" Height="450" Width="800">
+        Title="Quản lý khách hàng Aeon Mall" Height="600" Width="1000">
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Margin="10" Height="40"  Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -26,25 +24,25 @@
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
+            <xctk:IconButton Command="{Binding btnAddCustomerAM}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
                 <xctk:IconButton.Icon>
                     <Image Source="Images\Login\add-button.png"/>
                 </xctk:IconButton.Icon>
                 Thêm mới
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnDeleteCustomer}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Delete.png"/>
                 </xctk:IconButton.Icon>
                 Xóa
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnLuu}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnSaveAll}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Saving.png"/>
                 </xctk:IconButton.Icon>
                 Lưu lại
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXuatTxt}" Grid.Column="3" HorizontalAlignment="Left" Width="140">
+            <xctk:IconButton Command="{Binding btnExportCustomerTxt}" Grid.Column="3" HorizontalAlignment="Left" Width="140">
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Export.png"/>
                 </xctk:IconButton.Icon>
@@ -55,40 +53,30 @@
         <Grid Grid.Row="1" Name="GridAeonMall">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="390"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
 
                     <TextBlock Text="{Binding Content, RelativeSource=
                                          {RelativeSource Mode=TemplatedParent}}"/>
-
                     <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
                     <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
                     <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Width="Auto">
-                <DataGrid Grid.ColumnSpan="2" ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                    <DataGrid.Columns >
-                        <!--<DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" />-->
+                <DataGrid Grid.ColumnSpan="2"
+                          ItemsSource="{Binding DataTableCustomerManagerAM}"
+                          HorizontalScrollBarVisibility="Auto" 
+                          VerticalScrollBarVisibility="Auto"                            
+                          LoadingRow="DataTableCustomerManagerAM_Loading"
+                          x:Name="DataTableCustomerManagerAM"
+                          ColumnWidth="*" 
+                          Height="auto"                          
+                          MouseLeftButtonDown="Click_Double"
+                          >
 
-                        <DataGridTemplateColumn Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Width="*"  Header="Số thứ tự" Binding="{Binding SoThuTu}"/>
-                        <DataGridTextColumn Width="*"  Header="Mã cửa hàng" Binding="{Binding MaCuaHang}"/>
-                        <DataGridTextColumn Width="*"  Header="Tên cửa hàng" Binding="{Binding TenCuaHang}"/>
-                        <DataGridTextColumn Width="*"  Header="Ngày mở cửa" Binding="{Binding NgayMoCua}"/>
-                        <DataGridTextColumn Width="*"  Header="Ghi chú" Binding="{Binding GhiChu}"/>
-
-                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
         </Grid>

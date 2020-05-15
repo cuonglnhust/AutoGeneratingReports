@@ -28,7 +28,7 @@ namespace AutoGeneratingReports
         private readonly AutoGenReportDbContext _DbContext = new AutoGenReportDbContext();
         public MainWindow(AutoGenReportDbContext dbContext )
         {
-            _DbContext = dbContext;
+            //_DbContext = dbContext;
             MainWindowViewModel VM = new MainWindowViewModel(_DbContext);
             this.DataContext = VM;
             if (VM.CloseAction == null)

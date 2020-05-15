@@ -60,7 +60,24 @@ namespace AutoGeneratingReports.ViewModel
             get { return IndexTab; }
             set { IndexTab = value; OnPropertyChanged("SelectedIndex"); }
         }
-
+        private string _ThoiGianTaoCheckList;
+        public string ThoiGianTaoCheckList
+        {
+            get { return _ThoiGianTaoCheckList; }
+            set { _ThoiGianTaoCheckList = value; OnPropertyChanged("ThoiGianTaoCheckList"); }
+        }
+        private string _TuGioPhut;
+        public string TuGioPhut
+        {
+            get { return _TuGioPhut; }
+            set { _TuGioPhut = value; OnPropertyChanged("TuGioPhut"); }
+        }
+        private string _DenGioPhut;
+        public string DenGioPhut
+        {
+            get { return _DenGioPhut; }
+            set { _DenGioPhut = value; OnPropertyChanged("DenGioPhut"); }
+        }
 
         public DateTime StartDate
         {
@@ -189,7 +206,9 @@ namespace AutoGeneratingReports.ViewModel
             ResetCheckAV = new RelayCommand<object>((p) => { return true; }, (p) => { ResetCheckBoxAM(p); });
             InitGridAM();
             InitGridAV();
-                      
+            applyConfiguration();
+
+
             //var x = Properties.Settings.Default.Username;
             //_context = context;
             //if(x == "admin")
@@ -221,15 +240,30 @@ namespace AutoGeneratingReports.ViewModel
         }
         public void ShowThayMatKhau(System.Windows.Window wd)
         {
-            ChangePasswordWindow changePassword = new ChangePasswordWindow();
+            ChangePasswordWindow changePassword = new ChangePasswordWindow(Properties.Settings.Default.Username);
             changePassword.ShowDialog();
+            
+            
         }
         public void DangXuat(System.Windows.Window window)
         {
-            LoginWindow login = new LoginWindow();
-            login.Show();
-            CloseAction();
-            Properties.Settings.Default.Username = null;
+            try
+            {
+                var result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Xác nhận", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (result.ToString() == "OK")
+                {
+                    LoginWindow login = new LoginWindow();
+                    login.Show();
+                    CloseAction();
+                    Properties.Settings.Default.Username = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+           
+          
         }
         private void CloseWindow(System.Windows.Window window)
         {
@@ -1445,5 +1479,32 @@ namespace AutoGeneratingReports.ViewModel
 
             dbContext.SaveChanges();
         }
+
+        private void applyConfiguration()
+        {
+            AutoGenReportDbContext safenetLocalContext = new AutoGenReportDbContext();
+            try
+            {
+                var user = (from p in safenetLocalContext.Users
+                            where p.Username == Properties.Settings.Default.Username
+                select p).SingleOrDefault();
+                ThoiGianTaoCheckList = user.Time2GenCheckList;
+                //barEditItemTime2GenCheckList.EditValue = user.Time2GenCheckList;
+                TuGioPhut = user.TimeStart2Edit;
+                //barEditItemStartTime2Edit.EditValue = user.TimeStart2Edit;
+                DenGioPhut = user.TimeEnd2Edit;
+                //barEditItemEndTime2Edit.EditValue = user.TimeEnd2Edit;
+            }
+            catch (Exception ex)
+            {
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+
+        }
+        //private void SetText(string barEditItem, string text)
+        //{
+        //    barEditItem = text;
+            
+        //}
     }
 }

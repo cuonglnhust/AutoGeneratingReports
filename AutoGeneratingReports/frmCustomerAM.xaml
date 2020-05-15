@@ -1,0 +1,108 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoGeneratingReports"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AutoGeneratingReports.frmCustomerAM"
+        mc:Ignorable="d"
+        Title="Khách hàng AM" Height="380" Width="700">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Login/Background.png"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <TextBlock  Margin="5" Grid.Row="0" Grid.Column="0"><Run Text="Mã cửa hàng"/></TextBlock>
+        <TextBox FontSize="9.5"
+                     Text="{Binding CodeAM}"
+                     Margin="272,5,178.8,1.4"
+                     Height="25" BorderThickness="0.5"
+                     Width="200" Grid.Row="0"                                       
+                     />
+        <TextBlock Margin="5" Grid.Row="1" Grid.Column="0"><Run Text="Tên cửa hàng đầy đủ"/></TextBlock>
+        <TextBox  FontSize="9.5"
+                     Text="{Binding FullNameAM}"
+                     Margin="273,6.4,179,2.8"
+                     Height="25" BorderThickness="0.5"
+                     Grid.Row="1"
+                     Width="200"
+                     />
+        <TextBlock Margin="5" Grid.Row="2" Grid.Column="0"><Run Text="Tên cửa hàng"/></TextBlock>
+        <TextBox  FontSize="9.5"
+                     Margin="273,6.4,179,2.8"
+                    Text="{Binding ShortNameAM}"
+                     Height="25" BorderThickness="0.5"
+                     Grid.Row="2"
+                     Width="200"
+                     />
+        <TextBlock Padding="10" Margin="5" Grid.Row="3" Grid.Column="0"><Run Text="Ngày mở cửa"/></TextBlock>
+        <TextBox  FontSize="9.5"
+                     Margin="273,6.4,179,2.8"
+                     Height="25" BorderThickness="0.5"
+                     Grid.Row="3"
+                     Text="{Binding DateOpen}"
+                     Width="200"
+                     />
+        <TextBlock Padding="10" Margin="5" Grid.Row="4" Grid.Column="0"><Run Text="Ghi chú"/></TextBlock>
+        <TextBox  FontSize="9.5"
+                     Margin="273,10.4,179.8,56"
+                     Height="25" BorderThickness="0.5"
+                     Grid.Row="4"
+                     Text="{Binding NoteAM}"
+                     Width="200"
+                     />
+
+        <xctk:IconButton Foreground="White"
+                             Command="{Binding btnSaveCustomerAM}"
+                             Background ="DarkSeaGreen"
+                             Height="40"
+                             Grid.Row="4"
+                             VerticalContentAlignment="Bottom"
+                             HorizontalAlignment="Right"
+                             Width="100"
+                             Margin="0,94.2,129.6,-37.4"                             
+                             Content="  Lưu lại"
+                             >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <xctk:IconButton.Icon>
+                <Image  Source="Images\Login\Saving.png"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+        <xctk:IconButton Foreground="White"
+                             Command="{Binding btnSaveCustomerAM}"
+                             Background ="IndianRed"
+                             Height="40"
+                             Grid.Row="4"
+                             VerticalContentAlignment="Bottom"
+                             HorizontalAlignment="Right"
+                             Width="100"
+                             Margin="0,93.2,9.6,-38.8"                             
+                             Content="Quay lại" Click="IconButton_Click"
+                             >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <xctk:IconButton.Icon>
+                <Image  Source="Images\Login\ExitButton.png"/>
+            </xctk:IconButton.Icon>
+        </xctk:IconButton>
+
+    </Grid>
+</Window>

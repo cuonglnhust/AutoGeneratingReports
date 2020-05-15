@@ -22,7 +22,7 @@ namespace AutoGeneratingReports.ViewModel
         private string _TaiKhoan;
         private string _MatKhau;
         public Action CloseAction { get; set; }
-        public ICommand PasswordChangedCommand { get; set; }
+        public ICommand PasswordChangedCommand { get; set; } 
         public ICommand btn_Thoat { get; set; }
         public ICommand btn_DangNhap { get; private set; }      
         public string TaiKhoan
@@ -38,7 +38,7 @@ namespace AutoGeneratingReports.ViewModel
         //{
         //    get => _MatKhau; set { _MatKhau = value; OnPropertyChanged("PasswordChangedCommand");}
         //}
-        public string Password { get => _MatKhau; set { _MatKhau = value; OnPropertyChanged("PasswordChangedCommand"); } }
+        public string Password { get => _MatKhau; set { _MatKhau = value; OnPropertyChanged("PasswordChangedCommand");}}
 
         public LoginViewModel(AutoGenReportDbContext context)
         {
@@ -72,6 +72,7 @@ namespace AutoGeneratingReports.ViewModel
                 IsCurrentUserCredentialsValid = CredentialsSource.Check(CurrentUser.Login, CurrentUser.Password);
                 if (IsCurrentUserCredentialsValid)
                 {
+                    Properties.Settings.Default.Username = CurrentUser.Login;
                     State = AppState.Autorized;
                     MainWindow mainWindow = new MainWindow(_context);
                     CloseAction();
@@ -87,8 +88,7 @@ namespace AutoGeneratingReports.ViewModel
                     //lblError.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
 
                 }
-                Properties.Settings.Default.State = State.ToString();
-                Properties.Settings.Default.Username = CurrentUser.Login;
+                Properties.Settings.Default.State = State.ToString();                
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace AutoGeneratingReports.ViewModel
 
         }
       
-        static class CredentialsSource
+        public static class CredentialsSource
         {
             static MD5 m_md5 = new MD5CryptoServiceProvider();
             static System.Collections.Hashtable credentials;
@@ -109,9 +109,10 @@ namespace AutoGeneratingReports.ViewModel
             }
             static void reloadCredentialsSource()
             {
+                AutoGenReportDbContext safenetLocalDataContext = new AutoGenReportDbContext();
                 credentials = new System.Collections.Hashtable();
 
-                var results = from p in _dbContext.Users select p;
+                var results = from p in safenetLocalDataContext.Users select p;
                 foreach (var result in results)
                 {
                     credentials.Add(result.Username, result.Password);

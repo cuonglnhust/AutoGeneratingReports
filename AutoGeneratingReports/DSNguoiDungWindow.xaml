@@ -6,9 +6,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
-        Title="Danh sách người dùng" Height="450" Width="900" 
+        Title="Danh sách người dùng" Height="600" Width="1000" 
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"      
+        ResizeMode="CanResize"
         >
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
@@ -16,14 +16,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Margin="10" Height="40"  Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"></ColumnDefinition>
-                <ColumnDefinition Width="130"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="140"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
                 <xctk:IconButton.Icon>
@@ -31,11 +31,23 @@
                 </xctk:IconButton.Icon>
                 Thêm mới
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90" Click="btnXoaClick">
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Delete.png"/>
                 </xctk:IconButton.Icon>
                 Xóa
+            </xctk:IconButton>
+            <xctk:IconButton Command="{Binding btnResetAll}" Grid.Column="2" HorizontalAlignment="Left" Width="130" Click="btnResetAll">
+                <xctk:IconButton.Icon>
+                    <Image Margin="5" Source="Images\Login\FolderSetting1.png"/>
+                </xctk:IconButton.Icon>
+                Làm mới tất cả
+            </xctk:IconButton>
+            <xctk:IconButton Command="{Binding btnCapNhatQuyen}" Grid.Column="3" HorizontalAlignment="Left" Width="150" Click="btnCapNhatQuyen">
+                <xctk:IconButton.Icon>
+                    <Image Margin="5" Source="Images\Login\FolderSetting2.png"/>
+                </xctk:IconButton.Icon>
+                Cập nhật lại quyền
             </xctk:IconButton>
 
         </Grid>
@@ -43,20 +55,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-            </Grid>
-            <Grid Grid.Row="1" Width="Auto">
-                <DataGrid Grid.ColumnSpan="2" ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                    <DataGrid.Columns >
-                        <DataGridTextColumn Header="Tên đăng nhập" Binding="{Binding TenDangNhap}"/>
-                        <DataGridTextColumn Header="Thời gian tạo check List" Binding="{Binding ThoiGianTaoCheckList}"/>
-                        <DataGridTextColumn Header="Thời gian cho phép bắt đầu chỉnh sửa" Binding="{Binding ThoiGianBatDau}"/>
-                        <DataGridTextColumn Header="Thời gian cho phép kết thúc chỉnh sửa" Binding="{Binding ThoiGianKetThuc}"/>
-                        <DataGridTextColumn Header="Mô tả" Binding="{Binding MoTa}"/>
-                    </DataGrid.Columns>
+           
+            <Grid Grid.Row="0" Height="Auto" Width="Auto">
+                <DataGrid Grid.ColumnSpan="2"
+                          ItemsSource="{Binding DataTableUser, Mode=TwoWay}"
+                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          Height="auto"
+                          ColumnWidth="*"                         
+                          x:Name="DataGridNguoiDung"
+                          MouseLeftButtonDown="border1_MouseLeftButtonDown"
+                          IsReadOnly ="True"
+                          >
+                   
                 </DataGrid>
             </Grid>
         </Grid>

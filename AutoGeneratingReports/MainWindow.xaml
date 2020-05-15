@@ -168,7 +168,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Margin="5" Grid.Row="0" Grid.Column="0">Thời gian tạo CheckList</TextBlock>
-                            <TextBox Background="LightGray" IsReadOnly="True" Margin="2" Height="25" BorderThickness="0.5"  Width="100" Grid.Row="0" Grid.Column="1" Text="{Binding ThoiGianTaoCheckList}"/>
+                            <TextBox Background="LightGray" IsReadOnly="True" Margin="2" Height="25" BorderThickness="0.5"  Width="100" Grid.Row="0" Grid.Column="1" Text="{Binding ThoiGianTaoCheckList,UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </RibbonGroup>
                     <RibbonGroup Width="230" x:Name="ThoiGianChinhSua">
@@ -186,10 +186,10 @@
                             <TextBlock Margin="5" Grid.Row="0" Grid.Column="0">Thời gian chỉnh sửa</TextBlock>
 
                             <TextBlock Margin="5" Grid.Row="1" Grid.Column="0">Từ</TextBlock>
-                            <TextBox Background="LightGray" IsReadOnly="True" FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="80" Grid.Row="1" Grid.Column="1" Text="{Binding TuGioPhut}"/>
+                            <TextBox Background="LightGray" IsReadOnly="True" FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="80" Grid.Row="1" Grid.Column="1" Text="{Binding TuGioPhut,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <TextBlock Margin="5" Grid.Row="2" Grid.Column="0">Đến</TextBlock>
-                            <TextBox Background="LightGray" IsReadOnly="True" FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="80" Grid.Row="2" Grid.Column="1" Text="{Binding DenGioPhut}"/>
+                            <TextBox Background="LightGray" IsReadOnly="True" FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="80" Grid.Row="2" Grid.Column="1" Text="{Binding DenGioPhut,UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </RibbonGroup>
                     <RibbonGroup  x:Name="DangXuat">

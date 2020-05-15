@@ -1,5 +1,4 @@
 ﻿using AutoGeneratingReports.ViewModel;
-using AutoGenReport.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,32 +16,38 @@ using System.Windows.Shapes;
 namespace AutoGeneratingReports
 {
     /// <summary>
-    /// Interaction logic for ChangePasswordWindow.xaml
+    /// Interaction logic for frmCustomerAM.xaml
     /// </summary>
-    public partial class ChangePasswordWindow : Window
+    public partial class frmCustomerAM : Window
     {
-        private readonly AutoGenReportDbContext _DbContext = new AutoGenReportDbContext();
-        public ChangePasswordWindow()
+        public frmCustomerAM()
         {
-            ChangePasswordViewModel VM = new ChangePasswordViewModel(_DbContext);
+            frmCustomerAmViewModel VM = new frmCustomerAmViewModel();
             this.DataContext = VM;
-
             if (VM.CloseAction == null)
             {
                 VM.CloseAction = new Action(() => this.Close());
             }
             InitializeComponent();
         }
-        public ChangePasswordWindow(string UserName)
+        public frmCustomerAM(int idCust)
         {
-            ChangePasswordViewModel VM = new ChangePasswordViewModel(_DbContext);
+            frmCustomerAmViewModel VM = new frmCustomerAmViewModel(idCust);
             this.DataContext = VM;
-            VM.TenDangNhap = UserName;
             if (VM.CloseAction == null)
             {
                 VM.CloseAction = new Action(() => this.Close());
             }
             InitializeComponent();
+        }
+
+        private void IconButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            QuanLyKhachHangAeonMall quanLyKhach = new QuanLyKhachHangAeonMall();
+            quanLyKhach.ShowDialog();
+
+
         }
     }
 }
