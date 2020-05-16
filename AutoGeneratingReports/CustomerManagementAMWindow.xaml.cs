@@ -69,8 +69,7 @@ namespace AutoGeneratingReports
                     var idCus = int.Parse(IDCustomer);
                     frmCustomerAM userForm = new frmCustomerAM(idCus);
                     this.Close();
-                    userForm.ShowDialog();
-
+                    userForm.ShowDialog();                   
                 }              
             }
         }

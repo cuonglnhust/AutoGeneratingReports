@@ -76,7 +76,6 @@
                           Height="auto"                          
                           MouseLeftButtonDown="Click_Double"
                           >
-
                 </DataGrid>
             </Grid>
         </Grid>

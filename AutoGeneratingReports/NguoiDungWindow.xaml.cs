@@ -51,7 +51,7 @@ namespace AutoGeneratingReports
         {
             this.Close();
             DSNguoiDungWindow dSNguoiDung = new DSNguoiDungWindow();
-            dSNguoiDung.ShowDialog();
+            dSNguoiDung.Show();
         }
     }
 }

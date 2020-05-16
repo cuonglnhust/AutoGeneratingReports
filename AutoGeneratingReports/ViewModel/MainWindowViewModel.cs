@@ -180,11 +180,13 @@ namespace AutoGeneratingReports.ViewModel
                 OnPropertyChanged("MatKhauFile7z");
             }
         }
-        public ICommand btn_Thoat { get; set; } 
-       
+        public ICommand btn_Thoat { get; set; }
+        
         public MainWindowViewModel(AutoGenReportDbContext context)
         {
               _context = context;
+            Properties.Settings.Default.OutputFolderAV = barEditItemOutputAVFolder;
+            Properties.Settings.Default.Save();
             btnDsNguoiDung = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsNguoiDung(p); });
             btnDsQuayAv = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsQuayAv(p); });
             btnDsNguoiGiamSatAv = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsNguoiGiamSat(p); });

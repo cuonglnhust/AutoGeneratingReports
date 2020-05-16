@@ -2,8 +2,10 @@
 using AutoGenReport.Model;
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,7 @@ namespace AutoGeneratingReports.ViewModel
         public ICommand btnSaveAll { get; set; }
         public ICommand btnDeleteCustomer { get; set; }
         public ICommand btnAddCustomerAM { get; set; }
+        public ICommand btnExportCustomerTxt { get; set; }
 
 
         public CustomerManagementAmViewModel()
@@ -33,6 +36,7 @@ namespace AutoGeneratingReports.ViewModel
             btnSaveAll = new RelayCommand<object>((p) => { return true; }, (p) => { btnSaveAll_Click(p); });
             btnDeleteCustomer = new RelayCommand<object>((p) => { return true; }, (p) => { AcionDelete(p); });
             btnAddCustomerAM = new RelayCommand<object>((p) => { return true; }, (p) => { ShowAddCustomer(p); });
+            btnExportCustomerTxt = new RelayCommand<object>((p) => { return true; }, (p) => { ExportCustomerTxt(p); });
             InitCustomerManagementAM();
 
 
@@ -42,8 +46,8 @@ namespace AutoGeneratingReports.ViewModel
             try
             {
                 DataTableCustomerManagerAM = new System.Data.DataTable();
-                DataTableCustomerManagerAM.Columns.Add("Chọn",typeof(bool));
-                DataTableCustomerManagerAM.Columns.Add("ID",typeof(int));
+                DataTableCustomerManagerAM.Columns.Add("Chọn", typeof(bool));
+                DataTableCustomerManagerAM.Columns.Add("ID", typeof(int));
                 DataTableCustomerManagerAM.Columns.Add("Số thứ tự");
                 DataTableCustomerManagerAM.Columns.Add("Cards");
                 DataTableCustomerManagerAM.Columns.Add("Mã cửa hàng");
@@ -58,6 +62,50 @@ namespace AutoGeneratingReports.ViewModel
             {
                 HelperClass.writeExceptionToDebugger(ex);
             }
+
+        }
+        public void ExportCustomerTxt(object obj)
+        {
+
+            var query =
+                           (from p in DataTableCustomerManagerAM.AsEnumerable()
+                            where p.Field<bool>("Chọn").ToString() == "True"
+                            select p.Field<int>("ID")).ToList();
+            var lsiCustomerAm = _context.AeonMallCustomers.Where(x => query.Contains(x.AMCustomerID)).ToList();
+
+            if (lsiCustomerAm.Count() > 0)
+            {
+                string strOutputFolder = Properties.Settings.Default.OutputFolderAV;
+                string strFileName = Path.Combine(strOutputFolder, "CustomerAM.txt");
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFileName))
+                {
+                    foreach (var cus in lsiCustomerAm)
+                    {
+                        //DataRow row = rows[i] as DataRow;
+                        // Change the field value.
+                        string strTenantCode = cus.TenantCode;
+                        string strTenantShortName = cus.TenantShortName;
+                        string strTennantCodeFormat = string.Format("{0,-20}{1,-20}{2,1}{3,-7}{4,1}", strTenantCode, strTenantShortName, ";", strTenantCode, "?");
+                        file.WriteLine(strTennantCodeFormat);
+
+                        //Delete to lst 
+
+                        var queryUpdate = from p in _context.AeonMallCustomers
+                                          where p.AMCustomerID == cus.AMCustomerID
+                                          select p;
+                        if (queryUpdate.Count() > 0)
+                        {
+                            var customer = queryUpdate.SingleOrDefault();
+                            customer.Type = "OUT TXT";
+                        }
+                    }
+                }
+
+                _context.SaveChanges();
+                reloadGridView();
+                MessageBox.Show("Đã tạo thành công " + strFileName, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
 
         }
         public void reloadGridView()
@@ -145,8 +193,9 @@ namespace AutoGeneratingReports.ViewModel
         public void ShowAddCustomer(object obj)
         {
             frmCustomerAM frmCustomerAM = new frmCustomerAM();
-            CloseWindow();
+            CloseAction();
             frmCustomerAM.ShowDialog();
+            
         }
         private void CloseWindow()
         {

@@ -51,6 +51,7 @@ namespace AutoGeneratingReports.ViewModel
         }
         public frmCustomerAmViewModel(int IDCustomerAm)
         {
+            btnSaveCustomerAM = new RelayCommand<object>((p) => { return true; }, (p) => { SaveCustomerAm(p); });
             CustomerAmID = IDCustomerAm;
             Load_Form();
         }
