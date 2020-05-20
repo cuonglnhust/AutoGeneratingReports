@@ -33,6 +33,7 @@ namespace AutoGeneratingReports.ViewModel
         ResourceManager m_res_man = null;
 
         public DataGrid DataGridAm;
+        public string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public System.Action CloseAction { get; set; }
         public ICommand btnDsNguoiDung { get; set; }
         public ICommand btnDsQuayAv { get; set; }
@@ -49,6 +50,7 @@ namespace AutoGeneratingReports.ViewModel
         public ICommand SinhBangKiemQuyTongAM { get; set; }
         public ICommand SinhBangKiemQuyChoKiemDemAM { get; set; }
         public ICommand SinhBangKiemQuyChoKiemDemAV { get; set; }
+        
         public ICommand SaoChepCotAM { get; set; }
         public ICommand SaoChepCotAV { get; set; }
         public ICommand ResetCheckAM { get; set; }
@@ -98,7 +100,7 @@ namespace AutoGeneratingReports.ViewModel
                 OnPropertyChanged("StartDate");
             }
         }
-        private string _InputFolder = "C:\\Users\\cuong\\Desktop";
+        private string _InputFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public string barEditItemInputFolder
         {
             get { return _InputFolder; }
@@ -149,7 +151,7 @@ namespace AutoGeneratingReports.ViewModel
                 OnPropertyChanged("txtTimKiem");
             }
         }
-        private string _NoiXuatAeonMall = "C:\\Users\\cuong\\Desktop";
+        private string _NoiXuatAeonMall = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public string NoiXuatAeonMall
         {
             get { return _NoiXuatAeonMall; }

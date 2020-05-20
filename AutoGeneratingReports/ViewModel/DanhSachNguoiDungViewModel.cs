@@ -35,8 +35,8 @@ namespace AutoGeneratingReports.ViewModel
         public DanhSachNguoiDungViewModel(AutoGenReportDbContext context)
         {
             dbContext = context;
-            btnXoa = new RelayCommand<object>((p) => { return true; }, (p) => { AcionDelete(p); });
-            btnThemMoi = new RelayCommand<Window>((p) => { return true; }, (p) => { ShowAddForm(p); });
+            btnXoa = new RelayCommand<object>((p) => { return true; }, (p) => { AcionDelete(p);});
+            btnThemMoi = new RelayCommand<Window>((p) => { return true; }, (p) => { ShowAddForm(p);});
             //btnXoa = 
             InitGridListUser();
             updateUserTable();
@@ -94,7 +94,7 @@ namespace AutoGeneratingReports.ViewModel
                 foreach (var result in results)
                 {
                     DataRow row = DataTableUser.NewRow();
-                    row[0] = result.Username;                   
+                    row[0] = result.Username;
                     row[1] = result.Time2GenCheckList;
                     row[2] = result.TimeStart2Edit;
                     row[3] = result.TimeEnd2Edit;                    

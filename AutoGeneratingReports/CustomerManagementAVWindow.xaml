@@ -8,7 +8,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Quản lý khách hàng Aeon Mall Việt Nam" Height="450" Width="1000"               
+        Title="Quản lý khách hàng Aeon Mall Việt Nam" Height="580" Width="1000"               
         >
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
@@ -16,9 +16,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Margin="10" Height="40"  Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -26,19 +24,44 @@
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition Width="130"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
+            <xctk:IconButton Command="{Binding btnAddCusAV}"
+                             Grid.Column="0"
+                             HorizontalAlignment="Left"
+                             Width="120">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Source="Images\Login\add-button.png"/>
                 </xctk:IconButton.Icon>
                 Thêm mới
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnDeleteAV}"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Click="btnDeleteAv_Click"
+                             Width="90">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Delete.png"/>
                 </xctk:IconButton.Icon>
                 Xóa
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnLuu}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnSaveAll}"
+                             Grid.Column="2"
+                             HorizontalAlignment="Left"
+                             Width="90">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Saving.png"/>
                 </xctk:IconButton.Icon>
@@ -49,9 +72,7 @@
         <Grid Grid.Row="1" Name="GridAeonMall">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="390"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
@@ -59,22 +80,25 @@
                     <TextBlock Text="{Binding Content, RelativeSource=
                                          {RelativeSource Mode=TemplatedParent}}"/>
 
-                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm"
+                             Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"
+                             BorderThickness="1"
+                             Width="200"
+                             Height="30"/>
                     <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
                     <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Width="Auto">
-                <DataGrid Grid.ColumnSpan="2" ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                    <DataGrid.Columns >
-                        <DataGridTextColumn Width="*"  Header="Số thứ tự" Binding="{Binding SoThuTu}"/>
-                        <DataGridTextColumn Width="*"  Header="Tầng" Binding="{Binding Tang}"/>
-                        <DataGridTextColumn Width="*"  Header="Vị trí" Binding="{Binding ViTri}"/>
-                        <DataGridTextColumn Width="*"  Header="Số quầy" Binding="{Binding SoQuay}"/>
-                        <DataGridTextColumn Width="*"  Header="Tên quầy" Binding="{Binding TenQuay}"/>
-                        <DataGridTextColumn Width="*"  Header="Mã vạch túi đỏ" Binding="{Binding MaVachTuiDo}"/>
-                        <DataGridTextColumn Width="*"  Header="Mã vạch túi xanh" Binding="{Binding MaVachTuiXanh}"/>
-                    </DataGrid.Columns>
+                <DataGrid Grid.ColumnSpan="2"
+                          ItemsSource="{Binding DataTableCustomerManagerAV}"
+                          HorizontalScrollBarVisibility="Auto"
+                          LoadingRow="DataTableCustomerManagerAV_Loading"
+                          x:Name="DataTableCustomerManagerAV"
+                          VerticalScrollBarVisibility="Auto"
+                          MouseLeftButtonDown="Click_Double"
+                          ColumnWidth="*"
+                          Grid.Row="2">
                 </DataGrid>
             </Grid>
         </Grid>

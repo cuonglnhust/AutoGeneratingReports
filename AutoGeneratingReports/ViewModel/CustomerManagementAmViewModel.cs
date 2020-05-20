@@ -52,7 +52,7 @@ namespace AutoGeneratingReports.ViewModel
                 DataTableCustomerManagerAM.Columns.Add("Cards");
                 DataTableCustomerManagerAM.Columns.Add("Mã cửa hàng");
                 DataTableCustomerManagerAM.Columns.Add("TenantName");
-                DataTableCustomerManagerAM.Columns.Add("Tên cử hàng");
+                DataTableCustomerManagerAM.Columns.Add("Tên cửa hàng");
                 DataTableCustomerManagerAM.Columns.Add("Ngày mở cửa");
                 DataTableCustomerManagerAM.Columns.Add("Ghi chú");
                 DataTableCustomerManagerAM.Columns.Add("Type");
@@ -125,7 +125,7 @@ namespace AutoGeneratingReports.ViewModel
                 row["Cards"] = customer.Cards;
                 row["Mã cửa hàng"] = customer.TenantCode;
                 row["TenantName"] = customer.TenantName;
-                row["Tên cử hàng"] = customer.TenantShortName;
+                row["Tên cửa hàng"] = customer.TenantShortName;
                 row["Ngày mở cửa"] = customer.OpenningDate;
                 row["Ghi chú"] = customer.Note;
                 row["Type"] = customer.Type;

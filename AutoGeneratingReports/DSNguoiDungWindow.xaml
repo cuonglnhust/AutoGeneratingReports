@@ -26,24 +26,44 @@
                 <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Source="Images\Login\add-button.png"/>
                 </xctk:IconButton.Icon>
                 Thêm mới
             </xctk:IconButton>
             <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90" Click="btnXoaClick">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Delete.png"/>
                 </xctk:IconButton.Icon>
                 Xóa
             </xctk:IconButton>
             <xctk:IconButton Command="{Binding btnResetAll}" Grid.Column="2" HorizontalAlignment="Left" Width="130" Click="btnResetAll">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\FolderSetting1.png"/>
                 </xctk:IconButton.Icon>
                 Làm mới tất cả
             </xctk:IconButton>
             <xctk:IconButton Command="{Binding btnCapNhatQuyen}" Grid.Column="3" HorizontalAlignment="Left" Width="150" Click="btnCapNhatQuyen">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\FolderSetting2.png"/>
                 </xctk:IconButton.Icon>

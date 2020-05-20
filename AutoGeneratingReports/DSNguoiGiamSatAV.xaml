@@ -7,16 +7,14 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
-        Title="Danh sách người giám sát Aeon Mall Việt Nam " Height="450" Width="1000">
+        Title="Danh sách người giám sát Aeon Mall Việt Nam " Height="600" Width="1000">
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid Margin="10" Height="40"  Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -26,24 +24,44 @@
                 <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <xctk:IconButton Command="{Binding btnThemMoi}" Grid.Column="0" HorizontalAlignment="Left" Width="120">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Source="Images\Login\add-button.png"/>
                 </xctk:IconButton.Icon>
                 Thêm mới
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXoa}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnDeleteSuperVisor}" Grid.Column="1" HorizontalAlignment="Left" Width="90">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Delete.png"/>
                 </xctk:IconButton.Icon>
                 Xóa
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnLuu}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
+            <xctk:IconButton Command="{Binding btnSaveSuperVisor}" Grid.Column="2" HorizontalAlignment="Left" Width="90">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Saving.png"/>
                 </xctk:IconButton.Icon>
                 Lưu lại
             </xctk:IconButton>
-            <xctk:IconButton Command="{Binding btnXuatTxt}" Grid.Column="3" HorizontalAlignment="Left" Width="140">
+            <xctk:IconButton Command="{Binding btnExportTxtSuperVisor}" Grid.Column="3" HorizontalAlignment="Left" Width="140">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
                 <xctk:IconButton.Icon>
                     <Image Margin="5" Source="Images\Login\Export.png"/>
                 </xctk:IconButton.Icon>
@@ -53,10 +71,8 @@
 
         <Grid Grid.Row="1" Name="GridAeonMall">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
@@ -70,9 +86,18 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Width="Auto">
-                <DataGrid Grid.ColumnSpan="2" ItemsSource="{Binding DataTable}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                    <DataGrid.Columns >
-                        <!--<DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" />-->
+                <DataGrid Grid.ColumnSpan="2"
+                          Height="400"
+                          ItemsSource="{Binding DataTableSuperVisor}"
+                          HorizontalScrollBarVisibility="Visible"
+                          VerticalScrollBarVisibility="Visible"
+                          LoadingRow="SuperVisor_Loading"
+                          x:Name="SuperVisorTable"
+                          ColumnWidth="*" 
+                          MouseLeftButtonDown="Click_Double"
+                          Grid.Row="2">
+                    <!--<DataGrid.Columns >
+                        --><!--<DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" />--><!--
 
                         <DataGridTemplateColumn Width="*">
                             <DataGridTemplateColumn.CellTemplate>
@@ -87,7 +112,7 @@
                         <DataGridTextColumn Width="*"  Header="Ngày đăng kí" Binding="{Binding NgayDangKi}"/>
                         <DataGridTextColumn Width="*"  Header="Ghi chú" Binding="{Binding GhiChu}"/>
                         
-                    </DataGrid.Columns>
+                    </DataGrid.Columns>-->
                 </DataGrid>
             </Grid>
         </Grid>

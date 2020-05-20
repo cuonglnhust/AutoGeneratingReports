@@ -209,6 +209,9 @@
     <Compile Include="frmCustomerAM.xaml.cs">
       <DependentUpon>frmCustomerAM.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmCustomerAv.xaml.cs">
+      <DependentUpon>frmCustomerAv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataTableAM.cs" />
     <Compile Include="NguoiDungWindow.xaml.cs">
       <DependentUpon>NguoiDungWindow.xaml</DependentUpon>
@@ -217,12 +220,19 @@
       <DependentUpon>CustomerManagementAMWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\MainService.cs" />
+    <Compile Include="SuperVisorAV.xaml.cs">
+      <DependentUpon>SuperVisorAV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\frmCustomerAvViewModel.cs" />
     <Compile Include="ViewModel\CustomerManagementAmViewModel.cs" />
+    <Compile Include="ViewModel\CustomerManagementAvViewModel.cs" />
     <Compile Include="ViewModel\DanhSachNguoiDungViewModel.cs" />
     <Compile Include="ViewModel\frmCustomerAmViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\SuperVisorAvViewModel.cs" />
+    <Compile Include="ViewModel\SuperVisorManagementViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Page Include="ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
@@ -245,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frmCustomerAM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCustomerAv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerManagementAMWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SuperVisorAV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

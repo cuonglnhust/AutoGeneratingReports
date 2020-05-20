@@ -135,13 +135,13 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Margin="5" Grid.Row="0" Grid.Column="0">Nơi chứa dữ liệu</TextBlock>
-                            <TextBox FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5"  Width="200" Grid.Row="0" Grid.Column="1" Text="{Binding barEditItemInputFolder ,UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5"  Width="200" Grid.Row="0" Grid.Column="1" Text="{Binding barEditItemInputFolder ,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <TextBlock Margin="5" Grid.Row="1" Grid.Column="0">Nơi xuất dữ liệu AeonMall</TextBlock>
-                            <TextBox x:Name="txtAM" FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="200" Grid.Row="1" Grid.Column="1" Text="{Binding NoiXuatAeonMall, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="txtAM" FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5" Width="200" Grid.Row="1" Grid.Column="1" Text="{Binding NoiXuatAeonMall, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <TextBlock Margin="5" Grid.Row="2" Grid.Column="0">Nơi xuất dữ liệu Viettinbank</TextBlock>
-                            <TextBox FontSize="9.5" Margin="2" Height="20" BorderThickness="0.5" Width="200" Grid.Row="2" Grid.Column="1" Text="{Binding barEditItemOutputAVFolder, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5" Width="200" Grid.Row="2" Grid.Column="1" Text="{Binding barEditItemOutputAVFolder, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
 
                     </RibbonGroup>
