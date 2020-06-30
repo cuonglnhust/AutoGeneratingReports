@@ -35,19 +35,19 @@ namespace AutoGeneratingReports
         private void SuperVisor_Loading(object sender, DataGridRowEventArgs e)
         {
             
-            SuperVisorTable.Columns[7].Visibility = Visibility.Hidden;
-            SuperVisorTable.Columns[1].Visibility = Visibility.Hidden;
-            //SuperVisorTable.Columns[5].Visibility = Visibility.Hidden;
-            //SuperVisorTable.Columns[9].Visibility = Visibility.Hidden;
+            //SuperVisorTable.Columns[7].Visibility = Visibility.Hidden;
+            //SuperVisorTable.Columns[1].Visibility = Visibility.Hidden;
+            ////SuperVisorTable.Columns[5].Visibility = Visibility.Hidden;
+            ////SuperVisorTable.Columns[9].Visibility = Visibility.Hidden;
 
 
-            SuperVisorTable.Columns[1].IsReadOnly = true;
-            SuperVisorTable.Columns[2].IsReadOnly = true;
-            SuperVisorTable.Columns[3].IsReadOnly = true;
-            SuperVisorTable.Columns[4].IsReadOnly = true;
-            SuperVisorTable.Columns[5].IsReadOnly = true;
-            SuperVisorTable.Columns[6].IsReadOnly = true;
-            SuperVisorTable.Columns[7].IsReadOnly = true;
+            //SuperVisorTable.Columns[1].IsReadOnly = true;
+            //SuperVisorTable.Columns[2].IsReadOnly = true;
+            //SuperVisorTable.Columns[3].IsReadOnly = true;
+            //SuperVisorTable.Columns[4].IsReadOnly = true;
+            //SuperVisorTable.Columns[5].IsReadOnly = true;
+            //SuperVisorTable.Columns[6].IsReadOnly = true;
+            //SuperVisorTable.Columns[7].IsReadOnly = true;
             
             
         }
@@ -70,5 +70,10 @@ namespace AutoGeneratingReports
                 }
             }
         }
+
+        //private void SuperVisorTable_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        //{
+        //    e.Handled = true;
+        //}
     }
 }

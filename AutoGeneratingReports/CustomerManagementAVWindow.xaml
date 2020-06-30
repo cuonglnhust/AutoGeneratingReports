@@ -8,7 +8,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Quản lý khách hàng Aeon Mall Việt Nam" Height="580" Width="1000"               
+        Title="Quản lý khách hàng Aeon Mall Việt Nam" Height="580" Width="1200"       
+        Icon="\Images\Login\User1.png"
         >
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
@@ -90,16 +91,22 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Width="Auto">
+
                 <DataGrid Grid.ColumnSpan="2"
+                          ScrollViewer.CanContentScroll="True" 
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
                           ItemsSource="{Binding DataTableCustomerManagerAV}"
                           HorizontalScrollBarVisibility="Auto"
                           LoadingRow="DataTableCustomerManagerAV_Loading"
                           x:Name="DataTableCustomerManagerAV"
                           VerticalScrollBarVisibility="Auto"
+                         
                           MouseLeftButtonDown="Click_Double"
                           ColumnWidth="*"
                           Grid.Row="2">
                 </DataGrid>
+      
             </Grid>
         </Grid>
     </Grid>

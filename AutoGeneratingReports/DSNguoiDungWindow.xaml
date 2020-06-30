@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Danh sách người dùng" Height="600" Width="1000" 
         WindowStartupLocation="CenterScreen"
+        Icon="\Images\Login\User.png"
         ResizeMode="CanResize"
         >
     <Window.Background>

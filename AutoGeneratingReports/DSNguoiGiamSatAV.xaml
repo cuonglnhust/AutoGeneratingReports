@@ -7,6 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
+        Icon="\Images\Login\User2.png"
         Title="Danh sách người giám sát Aeon Mall Việt Nam " Height="600" Width="1000">
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
@@ -79,7 +80,6 @@
 
                     <TextBlock Text="{Binding Content, RelativeSource=
                                          {RelativeSource Mode=TemplatedParent}}"/>
-
                     <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  BorderThickness="1"  Width="200" Height="30"/>
                     <Button Command="{Binding btnTimKiem}" Background="LightGray" Margin="10" Height="30">Tìm kiếm</Button>
                     <Button Command="{Binding btnXoa}" Background="LightGray" Margin="5" Height="30" RenderTransformOrigin="1.238,0.566">Xóa</Button>
@@ -96,23 +96,7 @@
                           ColumnWidth="*" 
                           MouseLeftButtonDown="Click_Double"
                           Grid.Row="2">
-                    <!--<DataGrid.Columns >
-                        --><!--<DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected}" />--><!--
-
-                        <DataGridTemplateColumn Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Width="*"  Header="Số thứ tự" Binding="{Binding SoThuTu}"/>
-                        <DataGridTextColumn Width="*"  Header="Mã" Binding="{Binding MaCode}"/>
-                        <DataGridTextColumn Width="*"  Header="Tên người giám sát" Binding="{Binding TenNguoiGiamSat}"/>
-                        <DataGridTextColumn Width="*"  Header="Ngày đăng kí" Binding="{Binding NgayDangKi}"/>
-                        <DataGridTextColumn Width="*"  Header="Ghi chú" Binding="{Binding GhiChu}"/>
-                        
-                    </DataGrid.Columns>-->
+                  
                 </DataGrid>
             </Grid>
         </Grid>

@@ -185,10 +185,9 @@ namespace AutoGeneratingReports.ViewModel
                 {
                     MessageBox.Show("cập nhật thành công", "Thông báo", MessageBoxButton.OK);
                 }
-                
-               
-                //danhSach.updateUserTable();
 
+                //danhSach.updateUserTable();
+                
                 //this.DialogResult = DialogResult.OK;
                 //this.Close();
             }

@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:AutoGeneratingReports"
+        Icon="\Images\Login\User2.png"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"        
         Title="Quản lý khách hàng Aeon Mall" Height="600" Width="1000">

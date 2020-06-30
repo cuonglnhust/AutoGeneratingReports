@@ -166,13 +166,14 @@ namespace AutoGeneratingReports.ViewModel
                     customer.Cards = "" + row["Cards"];
                     customer.TenantCode = "" + row["Mã cửa hàng"];
                     customer.TenantName = ("" + row["TenantName"]).ToUpper();
-                    customer.TenantShortName = ("" + row["Tên cử hàng"]).ToUpper();
+                    customer.TenantShortName = ("" + row["Tên cửa hàng"]).ToUpper();
                     customer.OpenningDate = "" + row["Ngày mở cửa"];
                     customer.Note = "" + row["Ghi chú"];
                 }
 
             }
             _context.SaveChanges();
+            MessageBox.Show("Lưu thành công", "Xác nhận", MessageBoxButton.OKCancel);
             //SplashScreenManager.CloseForm();
         }
         public void AcionDelete(object obj)

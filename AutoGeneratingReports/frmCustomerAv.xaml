@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AutoGeneratingReports"
         mc:Ignorable="d"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Icon="\Images\Login\User1.png"
         ResizeMode="NoResize"
         Title="Quản lý khách hàng Aoen VietNam" Height="600" Width="800">
     <Window.Background>

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AutoGeneratingReports"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AutoGeneratingReports.frmCustomerAM"
         mc:Ignorable="d"
+        Icon="\Images\Login\User2.png"
         Title="Khách hàng AM" Height="380" Width="700">
     <Window.Background>
         <ImageBrush ImageSource="Images/Login/Background.png"/>
@@ -21,7 +22,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="auto"/>
-
         </Grid.RowDefinitions>
         <TextBlock  Margin="5" Grid.Row="0" Grid.Column="0"><Run Text="Mã cửa hàng"/></TextBlock>
         <TextBox FontSize="9.5"

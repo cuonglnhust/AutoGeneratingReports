@@ -47,16 +47,91 @@ namespace AutoGeneratingReports.ViewModel
         public ICommand btnXoa { get; set; }
         public ICommand ExportAeonMall { get; set; }
         public ICommand SinhBangKiemQuyTongAV { get; set; }
+        public ICommand XuatBaoCaoAeonVn { get; set; }
         public ICommand SinhBangKiemQuyTongAM { get; set; }
         public ICommand SinhBangKiemQuyChoKiemDemAM { get; set; }
         public ICommand SinhBangKiemQuyChoKiemDemAV { get; set; }
-        
         public ICommand SaoChepCotAM { get; set; }
         public ICommand SaoChepCotAV { get; set; }
         public ICommand ResetCheckAM { get; set; }
         public ICommand ResetCheckAV { get; set; }
-        private DateTime _startDate = DateTime.Now;
+        
         public int IndexTab = -1;
+        #region Set Visibility
+        private string _VXuatBaoCaoAeonMall = "Hidden";
+        public string VXuatBaoCaoAeonMall
+        {
+            get { return _VXuatBaoCaoAeonMall; }
+            set { _VXuatBaoCaoAeonMall = value; OnPropertyChanged("VXuatBaoCaoAeonMall"); }
+        }
+        private string _VSinhBangKiemQuyTongAM = "Hidden";
+        public string VSinhBangKiemQuyTongAM
+        {
+            get { return _VSinhBangKiemQuyTongAM; }
+            set { _VSinhBangKiemQuyTongAM = value; OnPropertyChanged("VSinhBangKiemQuyTongAM"); }
+        }
+        private string _VSinhBangKiemQuyChoKiemDemAM = "Hidden";
+        public string VSinhBangKiemQuyChoKiemDemAM
+        {
+            get { return _VSinhBangKiemQuyChoKiemDemAM; }
+            set { _VSinhBangKiemQuyChoKiemDemAM = value; OnPropertyChanged("VSinhBangKiemQuyChoKiemDemAM"); }
+        }
+        private string _VResetCheckAM = "Hidden";
+        public string VResetCheckAM
+        {
+            get { return _VResetCheckAM; }
+            set { _VResetCheckAM = value; OnPropertyChanged("VResetCheckAM"); }
+        }
+        private string _VXuatBaoCaoAeonVn = "Hidden";
+        public string VXuatBaoCaoAeonVn
+        {
+            get { return _VXuatBaoCaoAeonVn; }
+            set { _VXuatBaoCaoAeonVn = value; OnPropertyChanged("VXuatBaoCaoAeonVn"); }
+        }
+        private string _VSinhBangKiemQuyTongAV = "Hidden";
+        public string VSinhBangKiemQuyTongAV
+        {
+            get { return _VSinhBangKiemQuyTongAV; }
+            set { _VSinhBangKiemQuyTongAV = value; OnPropertyChanged("VSinhBangKiemQuyTongAV"); }
+        }
+        private string _VSinhBangKiemQuyChoKiemDemAV = "Hidden";
+        public string VSinhBangKiemQuyChoKiemDemAV
+        {
+            get { return _VSinhBangKiemQuyChoKiemDemAV; }
+            set { _VSinhBangKiemQuyChoKiemDemAV = value; OnPropertyChanged("VSinhBangKiemQuyChoKiemDemAV"); }
+        }
+        private string _VResetCheckAV = "Hidden";
+        public string VResetCheckAV
+        {
+            get { return _VResetCheckAV; }
+            set { _VResetCheckAV = value; OnPropertyChanged("VResetCheckAV");}
+        }
+        private string _VbtnDsNguoiDung = "Hidden";
+        public string VbtnDsNguoiDung
+        {
+            get { return _VbtnDsNguoiDung; }
+            set { _VbtnDsNguoiDung = value; OnPropertyChanged("VbtnDsNguoiDung");}
+        }
+        private string _VbtnDsQuayAv = "Hidden";
+        public string VbtnDsQuayAv
+        {
+            get { return _VbtnDsQuayAv; }
+            set { _VbtnDsQuayAv = value; OnPropertyChanged("VbtnDsQuayAv"); }
+        }
+        private string _VbtnDsNguoiGiamSatAv = "Hidden";
+        public string VbtnDsNguoiGiamSatAv
+        {
+            get { return _VbtnDsNguoiGiamSatAv; }
+            set { _VbtnDsNguoiGiamSatAv = value; OnPropertyChanged("VbtnDsNguoiGiamSatAv"); }
+        }
+        private string _VbtnDanhKHAeonMall = "Hidden";
+        public string VbtnDanhKHAeonMall
+        {
+            get { return _VbtnDanhKHAeonMall; }
+            set { _VbtnDanhKHAeonMall = value; OnPropertyChanged("VbtnDanhKHAeonMall"); }
+        }
+      
+        #endregion
         public int SelectedIndex
         {
             get { return IndexTab; }
@@ -80,7 +155,7 @@ namespace AutoGeneratingReports.ViewModel
             get { return _DenGioPhut; }
             set { _DenGioPhut = value; OnPropertyChanged("DenGioPhut"); }
         }
-
+        private DateTime _startDate = DateTime.Now;
         public DateTime StartDate
         {
             get { return _startDate; }
@@ -97,10 +172,10 @@ namespace AutoGeneratingReports.ViewModel
             set
             {
                 _endDate = value;
-                OnPropertyChanged("StartDate");
+                OnPropertyChanged("EndDate");
             }
         }
-        private string _InputFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private string _InputFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) ;
         public string barEditItemInputFolder
         {
             get { return _InputFolder; }
@@ -151,7 +226,8 @@ namespace AutoGeneratingReports.ViewModel
                 OnPropertyChanged("txtTimKiem");
             }
         }
-        private string _NoiXuatAeonMall = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private string _NoiXuatAeonMall = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Test1";
+        //private string __NoiXuatAeonMall = "C:\\Users\\cuong\\Desktop\\Test1";
         public string NoiXuatAeonMall
         {
             get { return _NoiXuatAeonMall; }
@@ -162,7 +238,7 @@ namespace AutoGeneratingReports.ViewModel
                 
             }
         }
-        private string _NoiXuatAeonVN = "C:\\Users\\cuong\\Desktop";
+        private string _NoiXuatAeonVN = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Test2";
         public string barEditItemOutputAVFolder
         {
             get { return _NoiXuatAeonVN; }
@@ -189,6 +265,7 @@ namespace AutoGeneratingReports.ViewModel
               _context = context;
             Properties.Settings.Default.OutputFolderAV = barEditItemOutputAVFolder;
             Properties.Settings.Default.Save();
+            
             btnDsNguoiDung = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsNguoiDung(p); });
             btnDsQuayAv = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsQuayAv(p); });
             btnDsNguoiGiamSatAv = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) => { ShowDsNguoiGiamSat(p); });
@@ -200,10 +277,11 @@ namespace AutoGeneratingReports.ViewModel
             btnTimKiemAV = new RelayCommand<object>((p) => { return true; }, (p) => { XuatDuLieuClick(p); });
             btnXoa = new RelayCommand<object>((p) => { return true; }, (p) => { DeleteSearch(p); });
             ExportAeonMall = new RelayCommand<object>((p) => { return true; }, (p) => { ExportAM(p); });
-            SinhBangKiemQuyTongAV = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyAV(p); });
+            XuatBaoCaoAeonVn = new RelayCommand<object>((p) => { return true; }, (p) => { ExportAV(p); });
+            SinhBangKiemQuyTongAV = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyAV(p); });          
             SinhBangKiemQuyTongAM = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyAM(p); });
             SinhBangKiemQuyChoKiemDemAM = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyKiemDemAM(p); });
-            SinhBangKiemQuyChoKiemDemAV = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyAV(p); });
+            SinhBangKiemQuyChoKiemDemAV = new RelayCommand<object>((p) => { return true; }, (p) => { SinhBangKiemQuyKiemDemAV(p); });
             SaoChepCotAM = new RelayCommand<object>((p) => { return true; }, (p) => { CopySelectionAM(p); });
             SaoChepCotAV = new RelayCommand<object>((p) => { return true; }, (p) => { CopySelectionAV(p); });
             ResetCheckAM = new RelayCommand<object>((p) => { return true; }, (p) => { ResetCheckBoxAM(p); });
@@ -211,6 +289,8 @@ namespace AutoGeneratingReports.ViewModel
             InitGridAM();
             InitGridAV();
             applyConfiguration();
+            applyRoles();
+            //VSinhBangKiemQuyTongAM = "Hidden";
 
 
             //var x = Properties.Settings.Default.Username;
@@ -221,8 +301,124 @@ namespace AutoGeneratingReports.ViewModel
             //}
 
         }
-        #region Hàm show form 
-        public void ShowDsNguoiDung(System.Windows.Window wd)
+        public void applyRoles()
+        {
+            AutoGenReportDbContext safenetLocalContext = new AutoGenReportDbContext();
+            var UserName = Properties.Settings.Default.Username;
+            bool bVisibleribbonPageAeonMall = false;// ribbonPageAeonMall.Visible = false;
+            bool bVisibleribbonPageAeonVN = false;
+            bool bVisibleribbonPageGroupGenerateReportAM = false; //ribbonPageGroupGenerateReportAM.Visible = false;
+            bool bVisibleribbonPageGroupGenerateReportAV = false; //ribbonPageGroupGenerateReportAM.Visible = false;
+            bool bVisibleribbonPageUsersManagement = false; ;// ribbonPageUsersManagement.Visible = false;
+            bool bEnableribbonPageGroupInOutFolder = false;// ribbonPageGroupInOutFolder.Enabled = false;
+            bool bEnableribbonPageGroupGenTime = false; //ribbonPageGroupGenTime.Enabled = false;
+            bool bVisibleribbonPageDBManagement = false;
+            bool bVisibleribbonPageQuantityListAM = false;
+            bool bVisibleribbonPageQuantityListAVN = false;
+            bool bVisibleribbonPageGroupCopyActual2DeclaredAM = false;
+            bool bVisibleribbonPageGroupCopyActual2DeclaredAVN = false;
+            m_bPermission2GenCheckList = false;
+            //m_bMonitor = false;
+            try
+            {
+
+                var roles = from p in safenetLocalContext.Users
+                            join role in safenetLocalContext.Users_Roles on p.Username equals role.Username
+                            where p.Username == UserName
+                            select new { roleID = role.RoleID };
+
+
+                //m_bEnableEditAM = false;
+                //m_bEnableEditAV = false;
+                //btnGenerateCheckList.Visible = false;
+                foreach (var role in roles)
+                {
+                    switch (role.roleID)
+                    {
+                        case "1":
+                            VXuatBaoCaoAeonMall = "Visible";
+                            //ribbonPageAeonMall.Visible = true;
+                            break;
+                        case "1.1":
+                            VSinhBangKiemQuyTongAM = "Visible";
+                            //ribbonPageGroupGenerateReportAM.Visible = true;
+                            break;
+                        case "1.2":
+                            //m_bEnableEditAM = true;
+                            VSinhBangKiemQuyChoKiemDemAM = "Visible";
+                            break;
+                        case "1.3":
+                            VResetCheckAM = "Visible";
+                            break;
+                        case "2":
+                            VXuatBaoCaoAeonVn = "Visible";
+                            //ribbonPageAeonVN.Visible = true;
+                            break;
+                        case "2.1":
+                            VSinhBangKiemQuyTongAV = "Visible";
+                            //ribbonPageGroupGenerateReportAM.Visible = true;
+                            break;
+                        case "2.2":
+                            //m_bEnableEditAV = true;
+                            VSinhBangKiemQuyChoKiemDemAV = "Visible";
+                            break;
+                        case "2.3":
+                            VResetCheckAV = "Visible";
+                            break;
+                        case "3":
+                            //SetVisible(ribbonPageSetting, true);
+                            //ribbonPageSetting.Visible = true;
+                            break;
+                        case "3.1":
+                            //bEnableribbonPageGroupInOutFolder = true;
+                            //ribbonPageGroupInOutFolder.Enabled = true;
+                            break;
+                        case "3.2":
+                            //bEnableribbonPageGroupGenTime = true;
+                            //ribbonPageGroupGenTime.Enabled = true;
+                            break;
+                        case "3.3":
+                            break;
+                        case "4":
+                            VbtnDsNguoiDung = "Visible";
+                            //ribbonPageUsersManagement.Visible = true;
+                            break;
+                        case "5.1":
+                            VbtnDsQuayAv = "Visible";
+                            //ribbonPageCustomerDB.Visible = true;
+                            break;
+                        case "5.2":
+                            VbtnDsNguoiGiamSatAv = "Visible";
+                            //ribbonPageCustomerDB.Visible = true;
+                            break;
+                        case "5.3":
+                            VbtnDanhKHAeonMall = "Visible";
+                            //ribbonPageCustomerDB.Visible = true;
+                            break;
+
+                    }
+                }
+
+                if (UserName == "admin" || UserName == "superadmin")
+                {
+                    bVisibleribbonPageAeonMall = true;// ribbonPageAeonMall.Visible = false;
+                    bVisibleribbonPageAeonVN = true;
+                    bVisibleribbonPageGroupGenerateReportAM = true; //ribbonPageGroupGenerateReportAM.Visible = false;
+                    bVisibleribbonPageGroupGenerateReportAV = true; //ribbonPageGroupGenerateReportAM.Visible = false;
+                    bVisibleribbonPageUsersManagement = true; ;// ribbonPageUsersManagement.Visible = false;
+                    bEnableribbonPageGroupInOutFolder = true;// ribbonPageGroupInOutFolder.Enabled = false;
+                    bEnableribbonPageGroupGenTime = true; //ribbonPageGroupGenTime.Enabled = false;
+                    bVisibleribbonPageUsersManagement = true;
+                    bVisibleribbonPageDBManagement = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+        }
+            #region Hàm show form 
+            public void ShowDsNguoiDung(System.Windows.Window wd)
         {
             DSNguoiDungWindow dSNguoiDung = new DSNguoiDungWindow();
             dSNguoiDung.ShowDialog();
@@ -299,7 +495,7 @@ namespace AutoGeneratingReports.ViewModel
         }
         private void SinhBangKiemQuyKiemDemAV(object obj)
         {
-            SinhBangKiemDemAM(DataTableAV, "BKQ-AEONVN-");
+            SinhBangKiemDemAV(DataTableAV, "BKQ-AEONVN-");
         }
         private void SinhBangKiemQuyAV(object obj){
             SinhKiemQuyAV();
@@ -365,10 +561,10 @@ namespace AutoGeneratingReports.ViewModel
                     if (row["Số tiền theo bảng kê"] != row["Thành tiền sau kiểm kê"])
                     {
                         row["Số tiền theo bảng kê"] = row["Thành tiền sau kiểm kê"];
-                        row[m_res_man.GetString("LastEdit", m_cul)] = Properties.Settings.Default.Username;
+                        row[13] = Properties.Settings.Default.Username;
                         string DateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
-                        row[m_res_man.GetString("TimeTag", m_cul)] = DateTimeString2String(DateTimeNow);
-                        var result = (from p in _context.DepositHistories where p.DepositHistoryID == row["ID Lịch sử gửi tiền"] select p).SingleOrDefault();
+                        row[14] = DateTimeString2String(DateTimeNow);
+                        var result = (from p in _context.DepositHistories where p.DepositHistoryID == row[1] select p).SingleOrDefault();
                         result.DeclaredAmount = "" + row["Số tiền theo bảng kê"];
                         result.TimeTag = DateTimeNow;
                         result.LastEdit = "" + row["Cập nhật gần nhất"];
@@ -417,9 +613,9 @@ namespace AutoGeneratingReports.ViewModel
                     if (row["Số tiền theo bảng kê"] != row["Thành tiền sau kiểm kê"])
                     {
                         row["Số tiền theo bảng kê"] = row["Thành tiền sau kiểm kê"];
-                        row[m_res_man.GetString("LastEdit", m_cul)] = Properties.Settings.Default.Username;
+                        row[12] = Properties.Settings.Default.Username;
                         string DateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
-                        row[m_res_man.GetString("TimeTag", m_cul)] = DateTimeString2String(DateTimeNow);
+                        row[13] = DateTimeString2String(DateTimeNow);
                         var result = (from p in _context.DepositHistories where p.DepositHistoryID == row["ID Lịch sử gửi tiền"] select p).SingleOrDefault();
                         result.DeclaredAmount = "" + row["Số tiền theo bảng kê"];
                         result.TimeTag = DateTimeNow;
@@ -453,8 +649,7 @@ namespace AutoGeneratingReports.ViewModel
                 DateTime dtEndAeonMall = DateTime.Parse(endDate);
                 DateTime dt = dtStartAeonMall;
 
-                //Create Data file
-                //SplashScreenManager.Default.SendCommand(SplashScreen2.SplashScreenCommand.SetCaption, "Generating DATA...");
+               
                 DateTime dtGeneratedFile = DateTime.Now;
 
                 while (dt <= dtEndAeonMall)
@@ -498,13 +693,80 @@ namespace AutoGeneratingReports.ViewModel
 
                     dt = dt.AddDays(1);
                 }
-                //SplashScreenManager.CloseForm(false);
-                //MessageBox.Show("Generating AEON MALL Reports successfully", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
 
             }
             catch (Exception ex)
             {
                //SplashScreenManager.CloseForm(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+            finally
+            {
+
+            }
+        }
+        private void SinhBangKiemDemAV(System.Data.DataTable dataTable, string strFileNameBeginning)
+        {
+            try
+            {
+                string startDate = "" + StartDate.ToString();
+                string endDate = "" + EndDate.ToString();
+                DateTime dtStartAeonMall = DateTime.Parse(startDate);
+                DateTime dtEndAeonMall = DateTime.Parse(endDate);
+                DateTime dt = dtStartAeonMall;
+
+
+                DateTime dtGeneratedFile = DateTime.Now;
+
+                while (dt <= dtEndAeonMall)
+                {
+                    string strDTFormat = dt.ToString("yyyyMMdd");
+                    var queryCountingPeople =
+                        from order in dataTable.AsEnumerable()
+                        where DateTime.ParseExact(order.Field<string>(4), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date == dt.Date
+                        group order by order.Field<string>(11)
+                            into g
+                        select new
+                        {
+                            CountingPeople = g.First().Field<string>(11) // Lấy hết người kiểm đếm
+                        };
+                    foreach (var countingPeople in queryCountingPeople)
+                    {
+                        IEnumerable<DataRow> query =
+                       from order in dataTable.AsEnumerable()
+                       where (DateTime.ParseExact(order.Field<string>(4), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date == dt.Date)
+                            && (order.Field<string>(11) == countingPeople.CountingPeople)
+                       orderby order.Field<string>(15) ascending
+                       select order;
+
+                        // Create a table from the query.
+                        if (query.Count() > 0)
+                        {
+                            System.Data.DataTable boundTable = query.CopyToDataTable<DataRow>();
+                            int strPage = IndexTab;
+                            switch (strPage)
+                            {
+                                case 0:
+                                    generateDenominationSlipsAeonByDay(boundTable, barEditItemOutputAVFolder + "\\" + strFileNameBeginning + countingPeople.CountingPeople + "-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\BKQ_AM.xltx"), true);
+                                    break;
+                                case 1:
+                                    generateDenominationSlipsAeonByDay(boundTable, barEditItemOutputAVFolder + "\\" + strFileNameBeginning + countingPeople.CountingPeople + "-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\BKQ_AV.xltx"), true);
+                                    break;
+                            }
+
+                        }
+                    }
+
+                    dt = dt.AddDays(1);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                //SplashScreenManager.CloseForm(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 HelperClass.writeExceptionToDebugger(ex);
             }
@@ -662,6 +924,172 @@ namespace AutoGeneratingReports.ViewModel
                 generateReportAeonMall();
             }
         }
+        private void ExportAV(object obj)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn xuất báo cáo", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result.ToString() == "OK")
+            {
+
+                generateReportAeonVN();
+            }
+        }
+        private void generateReportAeonVN()
+        {
+            //SplashScreenManager.ShowForm(this, typeof(SplashScreen2), true, true, false);
+            try
+            {
+                string startDate = "" + StartDate.ToString();
+                string endDate = "" + EndDate.ToString();
+                DateTime dtStartAeonMall = DateTime.Parse(startDate);
+                DateTime dtEndAeonMall = DateTime.Parse(endDate);
+                DateTime dt = dtStartAeonMall;
+
+                //SplashScreenManager.Default.SendCommand(SplashScreen2.SplashScreenCommand.SetCaption, "Generating AEON VN REPORTS...");
+                while (dt <= dtEndAeonMall)
+                {
+                    string strDTFormat = dt.ToString("yyyyMMdd");
+                    // Query the SalesOrderHeader table for orders placed 
+                    // after August 8, 2001.
+                    IEnumerable<DataRow> querySale =
+                        from order in DataTableAV.AsEnumerable()
+                        where (DateTime.ParseExact(order.Field<string>(4), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date == dt.Date) &&
+                               order.Field<string>(6)[10] == '1'
+                        orderby order.Field<string>(15) ascending
+                        select order;
+
+
+                    // Create a table from the query.
+                    if (querySale.Count() > 0)
+                    {
+                        System.Data.DataTable boundTable = querySale.CopyToDataTable<DataRow>();
+                        generateReportAeonVNByDay(boundTable, barEditItemOutputAVFolder + "\\" + "BBKD_SALE-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\TP_SAV.dll"));
+
+                    }
+
+                    IEnumerable<DataRow> queryIntermediate =
+                       from order in DataTableAV.AsEnumerable()
+                       where (DateTime.ParseExact(order.Field<string>(4), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date == dt.Date) &&
+                              order.Field<string>(6)[10] == '2'
+                       select order;
+
+                    if (queryIntermediate.Count() > 0)
+                    {
+                        System.Data.DataTable boundTable = queryIntermediate.CopyToDataTable<DataRow>();
+                        //Generate Counterfeit Report
+                        string strTemplateFile = Path.GetFullPath("DLL\\AV_Counterfeit.dll");
+                        string strOutputFile = "" + barEditItemOutputAVFolder;
+                        generateReportAeonVNByDay(boundTable, barEditItemOutputAVFolder + "\\" + "BBKD_INTERMEDIATE-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\TP_IAV.dll"));
+                    }
+
+                    IEnumerable<DataRow> queryTotal =
+                      from order in DataTableAV.AsEnumerable()
+                      where (DateTime.ParseExact(order.Field<string>(4), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date == dt.Date)
+                      select order;
+                    if (queryTotal.Count() > 0)
+                    {
+                        System.Data.DataTable boundTable = queryTotal.CopyToDataTable<DataRow>();
+                        //Generate Counterfeit Report
+                        string strTemplateFile = Path.GetFullPath("DLL\\AV_Counterfeit.dll");
+                        string strOutputFile = "" + barEditItemOutputAVFolder;
+                        generateCounterfeitReportAV(boundTable, strTemplateFile, strOutputFile, 6);
+                        strTemplateFile = Path.GetFullPath("DLL\\AEONVN_BBXNSS.dll");
+                        generateMistakeReportAV(boundTable, strTemplateFile, strOutputFile, 6);
+                        //Generate Daily Report
+                        generateDenominationSlipsAeonByDay(boundTable, barEditItemOutputAVFolder + "\\" + "BKQ-AEONVN-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\BKQ_AV.xltx"));
+                    }
+                    dt = dt.AddDays(1);
+                }
+                //SplashScreenManager.CloseForm();
+                MessageBox.Show("Generating AEON MALL Reports successfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+                // toolStripStatusLabel1.Text = "Generarating Report Completed!!!";
+                //MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xls");
+            }
+            catch (Exception ex)
+            {
+                //SplashScreenManager.CloseForm();
+                MessageBox.Show(ex.Message);
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+
+        }
+        private void generateReportAeonVNByDay(System.Data.DataTable dtAeonVNByDay, string strOutputFileName, string strDateTime, string strTemplateFile)
+        {
+            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            xlApp.DisplayAlerts = false;
+            xlApp.Visible = true;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            xlWorkSheet = xlApp.Application.Sheets.Add(Type.Missing, Type.Missing, Type.Missing, strTemplateFile);
+
+            var results = (from dt in dtAeonVNByDay.AsEnumerable()
+                           group dt by dt.Field<string>(6)
+                               into g
+                           select
+                           new
+                           {
+                               CustomerName = g.First().Field<string>(15),
+                               Barcode = g.First().Field<string>(6),
+                               DeclaredAmount = g.Sum(item => str2Money(item.Field<string>(7))),
+                               ActualAmount = g.Sum(item => str2Money(item.Field<string>(8))),
+                           });
+            int nInitRow = 11;
+            int nRow = nInitRow;
+            xlWorkSheet.Cells[4, 3] = "";// DateTime.Now.ToString("dd/MM/yyyy");
+            xlWorkSheet.Cells[4, 6] = DateTime.ParseExact(strDateTime, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+            foreach (var result in results)
+            {
+                if (nRow > nInitRow)
+                {
+
+                    Microsoft.Office.Interop.Excel.Range Line = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Rows[nRow];
+                    //Line.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+                    Line.Insert();
+                }
+                xlWorkSheet.Cells[nRow, 1] = "" + (nRow - nInitRow + 1);
+                xlWorkSheet.Cells[nRow, 2] = result.CustomerName;
+                xlWorkSheet.Cells[nRow, 3] = "'" + result.Barcode;
+                xlWorkSheet.Cells[nRow, 4] = result.DeclaredAmount;
+                xlWorkSheet.Cells[nRow, 5] = result.ActualAmount;
+                xlWorkSheet.Cells[nRow, 6] = result.ActualAmount - result.DeclaredAmount;
+                nRow++;
+
+            }
+            xlWorkSheet.Range["D" + nInitRow, "F" + nRow].NumberFormat = "#,#";
+            xlWorkSheet.Range["C" + nInitRow, "C" + nRow].NumberFormat = "@";
+            // double totalDeclaredAmount = dtAeonVNByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(m_res_man.GetString("DeclaredAmount",m_cul))));
+            // double totalActualAmount = dtAeonVNByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(m_res_man.GetString("ActualAmount",m_cul))));
+            double totalDeclaredAmount = results.Sum(item => item.DeclaredAmount);
+            double totalActualAmount = results.Sum(item => item.ActualAmount);// dtAeonVNByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(m_res_man.GetString("ActualAmount", m_cul))));
+
+            int totalCashier = results.Count();
+            xlWorkSheet.Cells[nRow, 3] = "'" + totalCashier;
+            xlWorkSheet.Cells[nRow, 4] = totalDeclaredAmount;
+            xlWorkSheet.Cells[nRow, 5] = totalActualAmount;
+            xlWorkSheet.Cells[nRow, 6] = totalActualAmount - totalDeclaredAmount;
+            Microsoft.Office.Interop.Excel.Range range = xlWorkSheet.Range[xlWorkSheet.Cells[nInitRow, 1], xlWorkSheet.Cells[nRow - 1, 1]];
+            Microsoft.Office.Interop.Excel.Borders border = range.Borders;
+            border.LineStyle = Excel.XlLineStyle.xlContinuous;
+
+
+
+            xlWorkBook.SaveAs(Path.GetFullPath(strOutputFileName), Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,
+                                     Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
+                                     Excel.XlSaveConflictResolution.xlUserResolution, true,
+                                     Missing.Value, Missing.Value, Missing.Value);
+            //xlWorkBook.Close(true, misValue, misValue);
+            //xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            //releaseObject(xlWorkBook);
+            //releaseObject(xlApp);
+        }
         private void generateReportAeonMall()
         {
             //SplashScreenManager.ShowForm(this, typeof(SplashScreen2), true, true, false);
@@ -699,12 +1127,10 @@ namespace AutoGeneratingReports.ViewModel
                         generateCounterfeitReport(boundTable, strTemplateFile, strOutputFile, "CustomerID");
                         strTemplateFile = Path.GetFullPath("DLL\\AEONMALL_BBXNSS.dll");
 
-                        //generateReportAeonMallByDay(boundTable, barEditItemOutputAVFolder.EditValue + "\\" + "BBKD-" + dt.ToString("yyyyMMdd") + ".docx", dt.ToString("yyyyMMdd"));
-                        //generateMistakeReport(boundTable, strTemplateFile, strOutputFile, "CustomerID");
-                        //generateDenominationSlipsAeonByDay(boundTable, barEditItemOutputAVFolder.EditValue + "\\" + "BKQ-AEONMALL-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\BKQ_AM.xltx"));
+                        generateReportAeonMallByDay(boundTable, barEditItemOutputAVFolder + "\\" + "BBKD-" + dt.ToString("yyyyMMdd") + ".docx", dt.ToString("yyyyMMdd"));
+                        generateMistakeReport(boundTable, strTemplateFile, strOutputFile, 5);
+                        generateDenominationSlipsAeonByDay(boundTable, barEditItemOutputAVFolder + "\\" + "BKQ-AEONMALL-" + dt.ToString("yyyyMMdd") + ".xlsx", dt.ToString("yyyyMMdd"), Path.GetFullPath("DLL\\BKQ_AM.xltx"));
                     }
-
-
                     dt = dt.AddDays(1);
                 }
                // SplashScreenManager.CloseForm(false);
@@ -722,6 +1148,644 @@ namespace AutoGeneratingReports.ViewModel
 
             }
         }
+        private void generateMistakeReport(System.Data.DataTable dtAeonByDay, string strTemplateFile, string strOutputPath, int strGroupField)
+        {
+            try
+            {
+                string strName = string.Empty;
+                if (SelectedIndex == 1)
+                    //strName = m_res_man.GetString("CashierName", m_cul);
+                    strName = "Người kiểm đếm";
+                else
+                    //strName = m_res_man.GetString("CustomerName", m_cul);
+                    strName = "Tên cửa hàng";
+
+                var result =
+                   from order in dtAeonByDay.AsEnumerable()
+                   group order by order.Field<string>(strGroupField) into g
+                   orderby g.First().Field<string>(5) ascending
+                   select
+                   new
+                   {
+                       CustomerID = g.First().Field<string>(5),
+                       BarcodeID = g.First().Field<string>(7),
+                       CustomerName = g.First().Field<string>(strName),
+                       SaleDate = g.First().Field<string>(4),
+                       NumBag = g.Count(),
+                       DeclaredAmount = g.Sum(item => str2Money(item.Field<string>(8))),
+                       ActualAmount = g.Sum(item => str2Money(item.Field<string>(9))),
+                       CounterfeitAmount = g.Sum(item => str2Money(item.Field<string>(10))),
+                       DiscrepancyAmount = g.Sum(item => str2Money(item.Field<string>(11))),
+                       QuantityC500k = g.Sum(item => extractValue(item.Field<string>(2),11)),
+                       QuantityC200k = g.Sum(item => extractValue(item.Field<string>(2),12)),
+                       QuantityC100k = g.Sum(item => extractValue(item.Field<string>(2),13)),
+                       QuantityC50k = g.Sum(item => extractValue(item.Field<string>(2),14)),
+                       QuantityC20k = g.Sum(item => extractValue(item.Field<string>(2),15)),
+                       QuantityC10k = g.Sum(item => extractValue(item.Field<string>(2),16)),
+                       QuantityC5k = g.Sum(item => extractValue(item.Field<string>(2),17)),
+                       QuantityC2k = g.Sum(item => extractValue(item.Field<string>(2),18)),
+                       QuantityC1k = g.Sum(item => extractValue(item.Field<string>(2),19)),
+                       QuantityC500 = g.Sum(item => extractValue(item.Field<string>(2),20)),
+                       QuantityC200 = g.Sum(item => extractValue(item.Field<string>(2),21)),
+
+                       QuantityD500k = g.Sum(item => extractValue(item.Field<string>(2),22)),
+                       QuantityD200k = g.Sum(item => extractValue(item.Field<string>(2),23)),
+                       QuantityD100k = g.Sum(item => extractValue(item.Field<string>(2),24)),
+                       QuantityD50k = g.Sum(item => extractValue(item.Field<string>(2),25)),
+                       QuantityD20k = g.Sum(item => extractValue(item.Field<string>(2),26)),
+                       QuantityD10k = g.Sum(item => extractValue(item.Field<string>(2),27)),
+                       QuantityD5k = g.Sum(item => extractValue(item.Field<string>(2),28)),
+                       QuantityD2k = g.Sum(item => extractValue(item.Field<string>(2),29)),
+                       QuantityD1k = g.Sum(item => extractValue(item.Field<string>(2),30)),
+                       QuantityD500 = g.Sum(item => extractValue(item.Field<string>(2),31)),
+                       QuantityD200 = g.Sum(item => extractValue(item.Field<string>(2),32))
+
+                   };
+
+                foreach (var customer in result)
+                {
+                    double totalDeclaredAmount = customer.DeclaredAmount;
+                    double totalActualAmount = customer.ActualAmount;
+                    double totalCounterfeitAmount = customer.CounterfeitAmount;
+                    double totalDiscrepancyAmount = customer.DiscrepancyAmount;
+                    double diffAmount = totalActualAmount - (totalDeclaredAmount - totalCounterfeitAmount - totalDiscrepancyAmount);
+
+                    if ((totalActualAmount != totalDeclaredAmount) || totalCounterfeitAmount != 0 || totalDiscrepancyAmount != 0)
+                    {
+                        string strActualAmount = "" + totalActualAmount;
+
+                        string strTenantName = customer.CustomerName;
+                        string strTenantCode = customer.CustomerID;
+                        string strSaleDate = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                        string strSaleDateddmmyyyy = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("ddMMyyyy");
+
+                        object oMissing = System.Reflection.Missing.Value;
+                        object oEndOfDoc = "\\endofdoc";
+                        Microsoft.Office.Interop.Word._Application objWord;
+                        Microsoft.Office.Interop.Word._Document objDoc;
+
+                        objWord = new Microsoft.Office.Interop.Word.Application();
+                        objWord.Visible = true;
+
+                        objDoc = objWord.Documents.Add(strTemplateFile);
+
+
+                        var sel = objWord.Selection;
+
+
+                        //[CURRENTDATE]
+                        replaceWord(sel, "[CURRENTDATE]", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                        //[TENANTNAME]
+                        replaceWord(sel, "[TENANTNAME]", strTenantName);
+                        //TENANTCODE
+                        int strPage = SelectedIndex;
+
+                        switch (strPage)
+                        {
+                            case 0:
+                                replaceWord(sel, "[TENANTCODE]", strTenantCode);
+                                break;
+                            case 1:
+                                replaceWord(sel, "[BARCODE]", customer.BarcodeID);
+                                break;
+                        }
+
+
+                        //SALEDATE
+                        replaceWord(sel, "[SALESDATE]", strSaleDate);
+
+                        //[NUMBAG]
+                        replaceWord(sel, "[NUMBAG]", "" + customer.NumBag);
+
+                        //[DECLAREDAMOUNT]
+                        replaceWord(sel, "[DECLAREDAMOUNT]", "" + customer.DeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture));
+
+                        //[DECLAREDAMOUNTINTEXT]
+                        replaceWord(sel, "[DECLAREDAMOUNTINTEXT]", HelperClass.ChuyenSo("" + customer.DeclaredAmount));
+
+
+                        //[TOTALAMOUNT]
+                        //replaceWord(sel, "[TOTALAMOUNT]", "" + (totalDeclaredAmount > 0.0 ? totalDeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[ACTUALAMOUNT]", "" + totalActualAmount.ToString("#,#", CultureInfo.InvariantCulture));
+                        // [ACTUALAMOUNTINTEXT]
+                        replaceWord(sel, "[ACTUALAMOUNTINTEXT]", HelperClass.ChuyenSo("" + totalActualAmount));
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[COUNTERFEITAMOUNT]", "" + (totalCounterfeitAmount != 0.0 ? totalCounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+                        int i = 0;
+                        int j = 0;
+                        Microsoft.Office.Interop.Word.Table objTable;
+                        Microsoft.Office.Interop.Word.Range wrdRng = objDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+
+
+                        objTable = objDoc.Tables[3];
+
+
+                        int nOrder = 0;
+                        //Counterfeit 
+                        string strQuantityC = "" + customer.QuantityC500k + "," +
+                                                    customer.QuantityC200k + "," +
+                                                    customer.QuantityC100k + "," +
+                                                    customer.QuantityC50k + "," +
+                                                    customer.QuantityC20k + "," +
+                                                    customer.QuantityC10k + "," +
+                                                    customer.QuantityC5k + "," +
+                                                    customer.QuantityC2k + "," +
+                                                    customer.QuantityC1k + "," +
+                                                    customer.QuantityC500 + "," +
+                                                    customer.QuantityC200;
+                        string[] strDenominationQuantity;
+                        double[] fDenomination = new double[] { 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200 };
+                        if (strQuantityC != string.Empty)
+                        {
+                            string[] strs = strQuantityC.Split(',');
+                            strDenominationQuantity = new string[11];
+                            for (int iC = 0; iC < 11; iC++)
+                            {
+
+                                strDenominationQuantity[iC] = strs[iC];
+                                int nIndex = 3 + iC;
+                                if (str2Money(strDenominationQuantity[iC]) > 0)
+                                {
+                                    objTable.Cell(nIndex, 6).Range.Text = strDenominationQuantity[iC];
+                                    double fAmount = (fDenomination[iC]) * str2Money(strDenominationQuantity[iC]);
+                                    objTable.Cell(nIndex, 7).Range.Text = "" + (fAmount != 0.0 ? fAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                                }
+
+                            }
+                            objTable.Cell(14, 6).Range.Text = "" + (customer.QuantityC500k + customer.QuantityC200k + customer.QuantityC100k + customer.QuantityC50k + customer.QuantityC20k + customer.QuantityC10k + customer.QuantityC5k + customer.QuantityC2k + customer.QuantityC1k + customer.QuantityC500 + customer.QuantityC200);
+                            double nAmountC = (customer.QuantityC500k * 500000 + customer.QuantityC200k * 200000 + customer.QuantityC100k * 100000 + customer.QuantityC50k * 50000 + customer.QuantityC20k * 20000 + customer.QuantityC10k * 10000 + customer.QuantityC5k * 5000 + customer.QuantityC2k * 2000 + customer.QuantityC1k * 1000 + customer.QuantityC500 * 500 + customer.QuantityC200 * 200);
+                            objTable.Cell(14, 7).Range.Text = nAmountC != 0.0 ? nAmountC.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                        }
+
+                        //Discrepancy 
+                        string strQuantityD = "" + customer.QuantityD500k + "," +
+                                                    customer.QuantityD200k + "," +
+                                                    customer.QuantityD100k + "," +
+                                                    customer.QuantityD50k + "," +
+                                                    customer.QuantityD20k + "," +
+                                                    customer.QuantityD10k + "," +
+                                                    customer.QuantityD5k + "," +
+                                                    customer.QuantityD2k + "," +
+                                                    customer.QuantityD1k + "," +
+                                                    customer.QuantityD500 + "," +
+                                                    customer.QuantityD200;
+                        if (strQuantityC != string.Empty)
+                        {
+                            string[] strs = strQuantityD.Split(',');
+                            strDenominationQuantity = new string[11];
+                            for (int iC = 0; iC < 11; iC++)
+                            {
+
+                                strDenominationQuantity[iC] = strs[iC];
+                                int nIndex = 3 + iC;
+                                if (str2Money(strDenominationQuantity[iC]) > 0)
+                                {
+                                    objTable.Cell(nIndex, 8).Range.Text = strDenominationQuantity[iC];
+                                    double fAmount = (fDenomination[iC]) * str2Money(strDenominationQuantity[iC]);
+                                    objTable.Cell(nIndex, 9).Range.Text = "" + (fAmount != 0.0 ? fAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                                }
+
+                            }
+                            if (diffAmount > 0)
+                            {
+                                objTable.Cell(14, 3).Range.Text = diffAmount != 0.0 ? diffAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                            }
+                            else
+                                objTable.Cell(14, 5).Range.Text = (-diffAmount) != 0.0 ? (-diffAmount).ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                            double nQuantityD = (customer.QuantityD500k + customer.QuantityD200k + customer.QuantityD100k + customer.QuantityD50k + customer.QuantityD20k + customer.QuantityD10k + customer.QuantityD5k + customer.QuantityD2k + customer.QuantityD1k + customer.QuantityD500 + customer.QuantityC200);
+                            objTable.Cell(14, 8).Range.Text = "" + nQuantityD;
+                            double nAmountD = (customer.QuantityD500k * 500000 + customer.QuantityD200k * 200000 + customer.QuantityD100k * 100000 + customer.QuantityD50k * 50000 + customer.QuantityD20k * 20000 + customer.QuantityD10k * 10000 + customer.QuantityD5k * 5000 + customer.QuantityD2k * 2000 + customer.QuantityD1k * 1000 + customer.QuantityD500 * 500 + customer.QuantityD200 * 200);
+                            objTable.Cell(14, 9).Range.Text = nAmountD != 0.0 ? nAmountD.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                        }
+                        string strOutputFile = string.Empty;
+                        if (customer.BarcodeID[10] == '2')
+                            strOutputFile = Path.Combine(strOutputPath, "BBSS_I_" + strTenantName + strSaleDateddmmyyyy + ".docx");
+                        else
+                            strOutputFile = Path.Combine(strOutputPath, "BBSS_S_" + strTenantName + strSaleDateddmmyyyy + ".docx");
+
+                        objDoc.SaveAs(strOutputFile);
+                        //objDoc.Close();
+                        //objWord.Quit();
+                        releaseObject(objTable);
+                        //releaseObject(objWord);
+                        //releaseObject(objDoc);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void generateMistakeReportAV(System.Data.DataTable dtAeonByDay, string strTemplateFile, string strOutputPath, int strGroupField)
+        {
+            try
+            {
+                string strName = string.Empty;
+                if (SelectedIndex == 1)
+                    //strName = m_res_man.GetString("CashierName", m_cul);
+                    strName = "Người kiểm đếm";
+                else
+                    //strName = m_res_man.GetString("CustomerName", m_cul);
+                    strName = "Tên cửa hàng";
+
+                var result =
+                   from order in dtAeonByDay.AsEnumerable()
+                   group order by order.Field<string>(strGroupField) into g
+                   orderby g.First().Field<string>(15) ascending
+                   select
+                   new
+                   {
+                       CustomerID = g.First().Field<string>(5),
+                       BarcodeID = g.First().Field<string>(7),
+                       CustomerName = g.First().Field<string>(strName),
+                       SaleDate = g.First().Field<string>(4),
+                       NumBag = g.Count(),
+                       DeclaredAmount = g.Sum(item => str2Money(item.Field<string>(8))),
+                       ActualAmount = g.Sum(item => str2Money(item.Field<string>(9))),
+                       CounterfeitAmount = g.Sum(item => str2Money(item.Field<string>(10))),
+                       DiscrepancyAmount = g.Sum(item => str2Money(item.Field<string>(11))),
+                       QuantityC500k = g.Sum(item => extractValue(item.Field<string>(2), 11)),
+                       QuantityC200k = g.Sum(item => extractValue(item.Field<string>(2), 12)),
+                       QuantityC100k = g.Sum(item => extractValue(item.Field<string>(2), 13)),
+                       QuantityC50k = g.Sum(item => extractValue(item.Field<string>(2), 14)),
+                       QuantityC20k = g.Sum(item => extractValue(item.Field<string>(2), 15)),
+                       QuantityC10k = g.Sum(item => extractValue(item.Field<string>(2), 16)),
+                       QuantityC5k = g.Sum(item => extractValue(item.Field<string>(2), 17)),
+                       QuantityC2k = g.Sum(item => extractValue(item.Field<string>(2), 18)),
+                       QuantityC1k = g.Sum(item => extractValue(item.Field<string>(2), 19)),
+                       QuantityC500 = g.Sum(item => extractValue(item.Field<string>(2), 20)),
+                       QuantityC200 = g.Sum(item => extractValue(item.Field<string>(2), 21)),
+
+                       QuantityD500k = g.Sum(item => extractValue(item.Field<string>(2), 22)),
+                       QuantityD200k = g.Sum(item => extractValue(item.Field<string>(2), 23)),
+                       QuantityD100k = g.Sum(item => extractValue(item.Field<string>(2), 24)),
+                       QuantityD50k = g.Sum(item => extractValue(item.Field<string>(2), 25)),
+                       QuantityD20k = g.Sum(item => extractValue(item.Field<string>(2), 26)),
+                       QuantityD10k = g.Sum(item => extractValue(item.Field<string>(2), 27)),
+                       QuantityD5k = g.Sum(item => extractValue(item.Field<string>(2), 28)),
+                       QuantityD2k = g.Sum(item => extractValue(item.Field<string>(2), 29)),
+                       QuantityD1k = g.Sum(item => extractValue(item.Field<string>(2), 30)),
+                       QuantityD500 = g.Sum(item => extractValue(item.Field<string>(2), 31)),
+                       QuantityD200 = g.Sum(item => extractValue(item.Field<string>(2), 32))
+
+                   };
+
+                foreach (var customer in result)
+                {
+                    double totalDeclaredAmount = customer.DeclaredAmount;
+                    double totalActualAmount = customer.ActualAmount;
+                    double totalCounterfeitAmount = customer.CounterfeitAmount;
+                    double totalDiscrepancyAmount = customer.DiscrepancyAmount;
+                    double diffAmount = totalActualAmount - (totalDeclaredAmount - totalCounterfeitAmount - totalDiscrepancyAmount);
+
+                    if ((totalActualAmount != totalDeclaredAmount) || totalCounterfeitAmount != 0 || totalDiscrepancyAmount != 0)
+                    {
+                        string strActualAmount = "" + totalActualAmount;
+
+                        string strTenantName = customer.CustomerName;
+                        string strTenantCode = customer.CustomerID;
+                        string strSaleDate = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                        string strSaleDateddmmyyyy = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("ddMMyyyy");
+
+                        object oMissing = System.Reflection.Missing.Value;
+                        object oEndOfDoc = "\\endofdoc";
+                        Microsoft.Office.Interop.Word._Application objWord;
+                        Microsoft.Office.Interop.Word._Document objDoc;
+
+                        objWord = new Microsoft.Office.Interop.Word.Application();
+                        objWord.Visible = true;
+
+                        objDoc = objWord.Documents.Add(strTemplateFile);
+
+
+                        var sel = objWord.Selection;
+
+
+                        //[CURRENTDATE]
+                        replaceWord(sel, "[CURRENTDATE]", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                        //[TENANTNAME]
+                        replaceWord(sel, "[TENANTNAME]", strTenantName);
+                        //TENANTCODE
+                        int strPage = SelectedIndex;
+
+                        switch (strPage)
+                        {
+                            case 0:
+                                replaceWord(sel, "[TENANTCODE]", strTenantCode);
+                                break;
+                            case 1:
+                                replaceWord(sel, "[BARCODE]", customer.BarcodeID);
+                                break;
+                        }
+
+
+                        //SALEDATE
+                        replaceWord(sel, "[SALESDATE]", strSaleDate);
+
+                        //[NUMBAG]
+                        replaceWord(sel, "[NUMBAG]", "" + customer.NumBag);
+
+                        //[DECLAREDAMOUNT]
+                        replaceWord(sel, "[DECLAREDAMOUNT]", "" + customer.DeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture));
+
+                        //[DECLAREDAMOUNTINTEXT]
+                        replaceWord(sel, "[DECLAREDAMOUNTINTEXT]", HelperClass.ChuyenSo("" + customer.DeclaredAmount));
+
+
+                        //[TOTALAMOUNT]
+                        //replaceWord(sel, "[TOTALAMOUNT]", "" + (totalDeclaredAmount > 0.0 ? totalDeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[ACTUALAMOUNT]", "" + totalActualAmount.ToString("#,#", CultureInfo.InvariantCulture));
+                        // [ACTUALAMOUNTINTEXT]
+                        replaceWord(sel, "[ACTUALAMOUNTINTEXT]", HelperClass.ChuyenSo("" + totalActualAmount));
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[COUNTERFEITAMOUNT]", "" + (totalCounterfeitAmount != 0.0 ? totalCounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+                        int i = 0;
+                        int j = 0;
+                        Microsoft.Office.Interop.Word.Table objTable;
+                        Microsoft.Office.Interop.Word.Range wrdRng = objDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+
+
+                        objTable = objDoc.Tables[3];
+
+
+                        int nOrder = 0;
+                        //Counterfeit 
+                        string strQuantityC = "" + customer.QuantityC500k + "," +
+                                                    customer.QuantityC200k + "," +
+                                                    customer.QuantityC100k + "," +
+                                                    customer.QuantityC50k + "," +
+                                                    customer.QuantityC20k + "," +
+                                                    customer.QuantityC10k + "," +
+                                                    customer.QuantityC5k + "," +
+                                                    customer.QuantityC2k + "," +
+                                                    customer.QuantityC1k + "," +
+                                                    customer.QuantityC500 + "," +
+                                                    customer.QuantityC200;
+                        string[] strDenominationQuantity;
+                        double[] fDenomination = new double[] { 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200 };
+                        if (strQuantityC != string.Empty)
+                        {
+                            string[] strs = strQuantityC.Split(',');
+                            strDenominationQuantity = new string[11];
+                            for (int iC = 0; iC < 11; iC++)
+                            {
+
+                                strDenominationQuantity[iC] = strs[iC];
+                                int nIndex = 3 + iC;
+                                if (str2Money(strDenominationQuantity[iC]) > 0)
+                                {
+                                    objTable.Cell(nIndex, 6).Range.Text = strDenominationQuantity[iC];
+                                    double fAmount = (fDenomination[iC]) * str2Money(strDenominationQuantity[iC]);
+                                    objTable.Cell(nIndex, 7).Range.Text = "" + (fAmount != 0.0 ? fAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                                }
+
+                            }
+                            objTable.Cell(14, 6).Range.Text = "" + (customer.QuantityC500k + customer.QuantityC200k + customer.QuantityC100k + customer.QuantityC50k + customer.QuantityC20k + customer.QuantityC10k + customer.QuantityC5k + customer.QuantityC2k + customer.QuantityC1k + customer.QuantityC500 + customer.QuantityC200);
+                            double nAmountC = (customer.QuantityC500k * 500000 + customer.QuantityC200k * 200000 + customer.QuantityC100k * 100000 + customer.QuantityC50k * 50000 + customer.QuantityC20k * 20000 + customer.QuantityC10k * 10000 + customer.QuantityC5k * 5000 + customer.QuantityC2k * 2000 + customer.QuantityC1k * 1000 + customer.QuantityC500 * 500 + customer.QuantityC200 * 200);
+                            objTable.Cell(14, 7).Range.Text = nAmountC != 0.0 ? nAmountC.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                        }
+
+                        //Discrepancy 
+                        string strQuantityD = "" + customer.QuantityD500k + "," +
+                                                    customer.QuantityD200k + "," +
+                                                    customer.QuantityD100k + "," +
+                                                    customer.QuantityD50k + "," +
+                                                    customer.QuantityD20k + "," +
+                                                    customer.QuantityD10k + "," +
+                                                    customer.QuantityD5k + "," +
+                                                    customer.QuantityD2k + "," +
+                                                    customer.QuantityD1k + "," +
+                                                    customer.QuantityD500 + "," +
+                                                    customer.QuantityD200;
+                        if (strQuantityC != string.Empty)
+                        {
+                            string[] strs = strQuantityD.Split(',');
+                            strDenominationQuantity = new string[11];
+                            for (int iC = 0; iC < 11; iC++)
+                            {
+
+                                strDenominationQuantity[iC] = strs[iC];
+                                int nIndex = 3 + iC;
+                                if (str2Money(strDenominationQuantity[iC]) > 0)
+                                {
+                                    objTable.Cell(nIndex, 8).Range.Text = strDenominationQuantity[iC];
+                                    double fAmount = (fDenomination[iC]) * str2Money(strDenominationQuantity[iC]);
+                                    objTable.Cell(nIndex, 9).Range.Text = "" + (fAmount != 0.0 ? fAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                                }
+
+                            }
+                            if (diffAmount > 0)
+                            {
+                                objTable.Cell(14, 3).Range.Text = diffAmount != 0.0 ? diffAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                            }
+                            else
+                                objTable.Cell(14, 5).Range.Text = (-diffAmount) != 0.0 ? (-diffAmount).ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                            double nQuantityD = (customer.QuantityD500k + customer.QuantityD200k + customer.QuantityD100k + customer.QuantityD50k + customer.QuantityD20k + customer.QuantityD10k + customer.QuantityD5k + customer.QuantityD2k + customer.QuantityD1k + customer.QuantityD500 + customer.QuantityC200);
+                            objTable.Cell(14, 8).Range.Text = "" + nQuantityD;
+                            double nAmountD = (customer.QuantityD500k * 500000 + customer.QuantityD200k * 200000 + customer.QuantityD100k * 100000 + customer.QuantityD50k * 50000 + customer.QuantityD20k * 20000 + customer.QuantityD10k * 10000 + customer.QuantityD5k * 5000 + customer.QuantityD2k * 2000 + customer.QuantityD1k * 1000 + customer.QuantityD500 * 500 + customer.QuantityD200 * 200);
+                            objTable.Cell(14, 9).Range.Text = nAmountD != 0.0 ? nAmountD.ToString("#,#", CultureInfo.InvariantCulture) : "0";
+                        }
+                        string strOutputFile = string.Empty;
+                        if (customer.BarcodeID[10] == '2')
+                            strOutputFile = Path.Combine(strOutputPath, "BBSS_I_" + strTenantName + strSaleDateddmmyyyy + ".docx");
+                        else
+                            strOutputFile = Path.Combine(strOutputPath, "BBSS_S_" + strTenantName + strSaleDateddmmyyyy + ".docx");
+
+                        objDoc.SaveAs(strOutputFile);
+                        //objDoc.Close();
+                        //objWord.Quit();
+                        releaseObject(objTable);
+                        //releaseObject(objWord);
+                        //releaseObject(objDoc);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void generateReportAeonMallByDay(System.Data.DataTable dtAeonMallByDay, string strOutputFileName, string strDateTime)
+        {
+
+            object oMissing = System.Reflection.Missing.Value;
+            object oEndOfDoc = "\\endofdoc";
+            Microsoft.Office.Interop.Word._Application objWord;
+            Microsoft.Office.Interop.Word._Document objDoc;
+
+            objWord = new Microsoft.Office.Interop.Word.Application();
+            objWord.Visible = true;
+
+            objDoc = objWord.Documents.Add(Path.GetFullPath("DLL\\TP_AM.dll"));
+
+            var sel = objWord.Selection;
+            //DELIVERYDETAILS
+            replaceWord(sel, "[DELIVERYDETAILS]", "Giao nhận tiền mặt");
+
+            //[SALESDATE]
+            replaceWord(sel, "[SALESDATE]", DateTime.ParseExact(strDateTime, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"));
+
+            //[NOOFMONEYBAG]
+            replaceWord(sel, "[NOOFMONEYBAG]", "" + dtAeonMallByDay.Rows.Count);
+
+            double totalDeclaredAmount = dtAeonMallByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(8)));
+            double totalActualAmount = dtAeonMallByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(9)));
+            double totalCounterfeitAmount = dtAeonMallByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(10)));
+            double totalDiscrepancyAmount = dtAeonMallByDay.AsEnumerable().Sum(item => str2Money(item.Field<string>(11)));
+
+            //[TOTALAMOUNT]
+            replaceWord(sel, "[TOTALAMOUNT]", "" + (totalDeclaredAmount > 0.0 ? totalDeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+            //[ACTUALAMOUNT]	VND
+            replaceWord(sel, "[ACTUALAMOUNT]", "" + totalActualAmount.ToString("#,#", CultureInfo.InvariantCulture));
+            //[ACTUALAMOUNT]	VND
+            replaceWord(sel, "[COUNTERFEITAMOUNT]", "" + (totalCounterfeitAmount != 0.0 ? totalCounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+
+            //[INSUFFICIENTAMOUNT]	VND
+            double nInsufficientAmount = totalDeclaredAmount - totalCounterfeitAmount - totalDiscrepancyAmount - totalActualAmount;
+            replaceWord(sel, "[INSUFFICIENTAMOUNT]", "" + (nInsufficientAmount > 0.0 ? nInsufficientAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+            //[SURPLUSAMOUNT]	VND
+            double nSurplusAmount = 0 - nInsufficientAmount;
+            replaceWord(sel, "[SURPLUSAMOUNT]", "" + (nSurplusAmount > 0 ? nSurplusAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+            //[DISCREPANCYAMOUNT]	VND
+            replaceWord(sel, "[DISCREPANCYAMOUNT]", "" + (totalDiscrepancyAmount > 0.0 ? totalDiscrepancyAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+            //Create Table
+
+            //objDoc = objWord.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+            int i = 0;
+            int j = 0;
+            Microsoft.Office.Interop.Word.Table objTable;
+            Microsoft.Office.Interop.Word.Range wrdRng = objDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+
+
+            objTable = objDoc.Tables[3];
+            var results = (from dt in dtAeonMallByDay.AsEnumerable()
+                           group dt by dt.Field<string>(6)
+                               into g
+                           select
+                           new
+                           {
+                               CustomerID = g.First().Field<string>(5),
+                               CustomerName = g.First().Field<string>(6),
+                               NumOfBag = g.Count(),
+                               DeclaredAmount = g.Sum(item => str2Money(item.Field<string>(8))),
+                               ActualAmount = g.Sum(item => str2Money(item.Field<string>(9))),
+                               CounterfeitAmount = g.Sum(item => str2Money(item.Field<string>(10))),
+                               DiscrepancyAmount = g.Sum(item => str2Money(item.Field<string>(11))),
+                           });
+
+            int nOrder = 0;
+            foreach (var result in results)
+            {
+                int nIndex = objTable.Rows.Count - 1;
+                objTable.Rows.Add(objTable.Rows[nIndex]);
+
+                objTable.Cell(nIndex, 1).Range.Text = "" + (++nOrder);
+                objTable.Cell(nIndex, 2).Range.Text = "" + result.CustomerID;
+                objTable.Cell(nIndex, 3).Range.Text = result.CustomerName;
+                objTable.Cell(nIndex, 4).Range.Text = "" + result.NumOfBag;
+                objTable.Cell(nIndex, 5).Range.Text = "" + (result.DeclaredAmount != 0.0 ? result.DeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                objTable.Cell(nIndex, 6).Range.Text = "" + (result.ActualAmount != 0.0 ? result.ActualAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+
+
+                bool bFirstLine = true;
+                if (result.CounterfeitAmount > 0)
+                {
+                    if (!bFirstLine)
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text += (result.CounterfeitAmount != 0.0 ? result.CounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+                        objTable.Cell(nIndex, 8).Range.Text += "Tiền giả";
+                    }
+                    else
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text = (result.CounterfeitAmount != 0.0 ? result.CounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+                        objTable.Cell(nIndex, 8).Range.Text = "Tiền giả";
+                    }
+
+                    bFirstLine = false;
+                }
+
+                if (result.DiscrepancyAmount > 0)
+                {
+                    if (!bFirstLine)
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text += (result.DiscrepancyAmount != 0.0 ? result.DiscrepancyAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+                        objTable.Cell(nIndex, 8).Range.Text += "Tiền bất hợp lệ";
+                    }
+                    else
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text = (result.DiscrepancyAmount != 0.0 ? result.DiscrepancyAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+                        objTable.Cell(nIndex, 8).Range.Text = "Tiền bất hợp lệ";
+                    }
+
+                    bFirstLine = false;
+                }
+                double diffAmount = result.ActualAmount - (result.DeclaredAmount - result.CounterfeitAmount - result.DiscrepancyAmount);
+                if (diffAmount != 0)
+                {
+                    if (!bFirstLine)
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text += (diffAmount != 0.0 ? Math.Abs(diffAmount).ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+
+                        if (diffAmount > 0)
+                            objTable.Cell(nIndex, 8).Range.Text += "Tiền thừa";
+                        else if (diffAmount < 0)
+                            objTable.Cell(nIndex, 8).Range.Text += "Tiền thiếu";
+                    }
+                    else
+                    {
+                        objTable.Cell(nIndex, 7).Range.Text = (diffAmount != 0.0 ? Math.Abs(diffAmount).ToString("#,#", CultureInfo.InvariantCulture) : "0"); ;
+
+                        if (diffAmount > 0)
+                            objTable.Cell(nIndex, 8).Range.Text = "Tiền thừa";
+                        else if (diffAmount < 0)
+                            objTable.Cell(nIndex, 8).Range.Text = "Tiền thiếu";
+                    }
+
+                }
+
+            };
+            objTable.Rows[objTable.Rows.Count - 1].Delete();
+
+            //Last row
+            double nInsufficientAmountIncludingAll = totalDeclaredAmount - totalActualAmount;
+            double nSurplusAmountIncludingAll = 0 - nInsufficientAmountIncludingAll;
+
+            int nlastRow = objTable.Rows.Count;
+            objTable.Cell(nlastRow, 2).Range.Text = "" + (totalDeclaredAmount != 0.0 ? totalDeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+            objTable.Cell(nlastRow, 3).Range.Text = "" + (totalActualAmount != 0.0 ? totalActualAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+            if (nSurplusAmountIncludingAll >= 0)
+                objTable.Cell(nlastRow, 4).Range.Text = "" + (nSurplusAmountIncludingAll != 0.0 ? nSurplusAmountIncludingAll.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+            else
+                objTable.Cell(nlastRow, 4).Range.Text = "(" + (0 - nSurplusAmountIncludingAll).ToString("#,#", CultureInfo.InvariantCulture) + ")";
+            //End Create Table
+
+            objDoc.SaveAs(strOutputFileName);
+            //objDoc.Close();
+            //objWord.Quit();
+            releaseObject(objTable);
+            //releaseObject(objWord);
+            //releaseObject(objDoc);
+
+
+        }
+
         private void generateDATFile(DateTime dtGeneratedFile)
         {
             try
@@ -820,8 +1884,195 @@ namespace AutoGeneratingReports.ViewModel
 
                         string strTenantName = customer.CustomerName;
 
-                        //if(ribbonControlMain.SelectedPage.Name=="ribbonPageAeonVN")
-                        //   strTenantName=row.Field<string>(m_res_man.GetString("CashierName", m_cul));
+                        //if (ribbonControlMain.SelectedPage.Name == "ribbonPageAeonVN")
+                        //    strTenantName = row.Field<string>(m_res_man.GetString("CashierName", m_cul));
+                        //else
+                        //    strTenantName = row.Field<string>(m_res_man.GetString("CustomerName", m_cul));
+                        string strTenantCode = customer.CustomerID;//row.Field<string>(m_res_man.GetString("CustomerID", m_cul));
+                        string strSaleDate = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"); ;// ateTime.ParseExact(row.Field<string>(m_res_man.GetString("SaleDate", m_cul)), "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                        string strSaleDateddmmyyyy = DateTime.ParseExact(customer.SaleDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("ddMMyyyy"); ;//DateTime.ParseExact(row.Field<string>(m_res_man.GetString("SaleDate", m_cul)), "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("ddMMyyyy");
+
+                        object oMissing = System.Reflection.Missing.Value;
+                        object oEndOfDoc = "\\endofdoc";
+                        Microsoft.Office.Interop.Word._Application objWord;
+                        Microsoft.Office.Interop.Word._Document objDoc;
+
+                        objWord = new Microsoft.Office.Interop.Word.Application();
+                        objWord.Visible = true;
+
+                        objDoc = objWord.Documents.Add(strTemplateFile);
+
+
+                        var sel = objWord.Selection;
+
+
+                        //[CURRENTDATE]
+                        replaceWord(sel, "[CURRENTDATE]", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                        //[TENANTNAME]
+                        replaceWord(sel, "[TENANTNAME]", strTenantName);
+                        //TENANTCODE
+                        //string strPage = ribbonControlMain.SelectedPage.Name;
+
+                        //switch (strPage)
+                        //{
+                        //    case "ribbonPageAeonMall":
+                        //        replaceWord(sel, "[TENANTCODE]", strTenantCode);
+                        //        break;
+                        //    case "ribbonPageAeonVN":
+                        //        replaceWord(sel, "[BARCODE]", customer.BarcodeID);
+                        //        break;
+                        //}
+
+                        //SALEDATE
+                        replaceWord(sel, "[SALESDATE]", strSaleDate);
+
+                        //  
+                        //   replaceWord(sel, "[NUMBAG]", ""+customer.NumBag);
+
+                        double totalDeclaredAmount = customer.DeclaredAmount;//str2Money(row.Field<string>(m_res_man.GetString("DeclaredAmount", m_cul)));
+                        double totalActualAmount = customer.ActualAmount;//str2Money(row.Field<string>(m_res_man.GetString("ActualAmount", m_cul)));
+
+                        double totalDiscrepancyAmount = customer.DiscrepancyAmount;//str2Money(row.Field<string>(m_res_man.GetString("DiscrepancyAmount", m_cul)));
+
+                        //[TOTALAMOUNT]
+                        replaceWord(sel, "[TOTALAMOUNT]", "" + (totalDeclaredAmount > 0.0 ? totalDeclaredAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[ACTUALAMOUNT]", "" + totalActualAmount.ToString("#,#", CultureInfo.InvariantCulture));
+                        //[ACTUALAMOUNT]	VND
+                        replaceWord(sel, "[COUNTERFEITAMOUNT]", "" + (totalCounterfeitAmount != 0.0 ? totalCounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0"));
+                        //  replaceWord(sel, "[DECLAREDAMOUNT]", ""+customer.DeclaredAmount);
+                        int i = 0;
+                        int j = 0;
+                        Microsoft.Office.Interop.Word.Table objTable;
+                        Microsoft.Office.Interop.Word.Range wrdRng = objDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+
+
+                        objTable = objDoc.Tables[2];
+
+
+                        int nOrder = 0;
+                        string strQuantity = "" + customer.QuantityC500k + "," +
+                                                    customer.QuantityC200k + "," +
+                                                    customer.QuantityC100k + "," +
+                                                    customer.QuantityC50k + "," +
+                                                    customer.QuantityC20k + "," +
+                                                    customer.QuantityC10k + "," +
+                                                    customer.QuantityC5k + "," +
+                                                    customer.QuantityC2k + "," +
+                                                    customer.QuantityC1k + "," +
+                                                    customer.QuantityC500 + "," +
+                                                    customer.QuantityC200;
+                        //row.Field<string>(m_res_man.GetString("Quantity", m_cul));
+                        string[] strDenominationQuantity;
+                        double[] fDenomination = new double[] { 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200 };
+                        if (strQuantity != string.Empty)
+                        {
+                            string[] strs = strQuantity.Split(',');
+                            strDenominationQuantity = new string[11];
+                            for (int iC = 0; iC < 11; iC++)
+                            {
+
+                                strDenominationQuantity[iC] = strs[iC];
+                                int nIndex = objTable.Rows.Count - 1;
+                                if (str2Money(strDenominationQuantity[iC]) > 0)
+                                {
+                                    objTable.Rows.Add(objTable.Rows[nIndex]);
+
+                                    objTable.Cell(nIndex, 1).Range.Text = "" + (nIndex - 2);
+                                    objTable.Cell(nIndex, 2).Range.Text = "VND";
+                                    objTable.Cell(nIndex, 3).Range.Text = "Polyme";
+
+                                    objTable.Cell(nIndex, 4).Range.Text = fDenomination[iC].ToString("#,#", CultureInfo.InvariantCulture);
+                                    objTable.Cell(nIndex, 5).Range.Text = strDenominationQuantity[iC];
+                                    double fAmount = (fDenomination[iC]) * str2Money(strDenominationQuantity[iC]);
+                                    objTable.Cell(nIndex, 8).Range.Text = "" + (fAmount != 0.0 ? fAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+                                }
+
+                            }
+                            objTable.Rows[objTable.Rows.Count - 1].Delete();
+                        }
+                        else
+                            strDenominationQuantity = new string[] { "", "", "", "", "", "", "", "", "", "", "" };
+
+
+                        ////Last row
+                        int nlastRow = objTable.Rows.Count;
+                        objTable.Cell(nlastRow, 2).Range.Text = "" + (totalCounterfeitAmount != 0.0 ? totalCounterfeitAmount.ToString("#,#", CultureInfo.InvariantCulture) : "0");
+
+                        string strOutputFile = Path.Combine(strOutputPath, "BBTG" + strTenantName + strSaleDateddmmyyyy + ".docx");
+
+                        objDoc.SaveAs(strOutputFile);
+                        //objDoc.Close();
+                        //objWord.Quit();
+                        releaseObject(objTable);
+                        //releaseObject(objWord);
+                        //releaseObject(objDoc);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                HelperClass.writeExceptionToDebugger(ex);
+            }
+
+        }
+        private void generateCounterfeitReportAV(System.Data.DataTable dtAeonMallByDay, string strTemplateFile, string strOutputPath, int strGroupField)
+        {
+            try
+            {
+                //string strName;
+                //if (ribbonControlMain.SelectedPage.Name == "ribbonPageAeonVN")
+                //    strName = m_res_man.GetString("CashierName", m_cul);
+                //else
+                //    strName = m_res_man.GetString("CustomerName", m_cul);
+
+
+                //dActualAmount = g.Sum(item => str2Money(item.Field<string>(m_res_man.GetString("ActualAmount", m_cul))))
+                var result =
+                    from order in dtAeonMallByDay.AsEnumerable()
+                    group order by order.Field<string>(strGroupField) into g
+                    orderby g.First().Field<string>(15) ascending
+                    select
+                    new
+                    {
+                        CustomerID = g.First().Field<string>(15),
+                        BarcodeID = g.First().Field<string>(6),
+                        CustomerName = g.First().Field<string>(15),
+                        SaleDate = g.First().Field<string>(4),
+                        NumBag = g.Count(),
+                        DeclaredAmount = g.Sum(item => str2Money(item.Field<string>(8))),
+                        ActualAmount = g.Sum(item => str2Money(item.Field<string>(9))),
+                        CounterfeitAmount = g.Sum(item => str2Money(item.Field<string>(10))),
+                        DiscrepancyAmount = g.Sum(item => str2Money(item.Field<string>(11))),
+                        QuantityC500k = g.Sum(item => extractValue(item.Field<string>(2), 11)),
+                        QuantityC200k = g.Sum(item => extractValue(item.Field<string>(2), 12)),
+                        QuantityC100k = g.Sum(item => extractValue(item.Field<string>(2), 13)),
+                        QuantityC50k = g.Sum(item => extractValue(item.Field<string>(2), 14)),
+                        QuantityC20k = g.Sum(item => extractValue(item.Field<string>(2), 15)),
+                        QuantityC10k = g.Sum(item => extractValue(item.Field<string>(2), 16)),
+                        QuantityC5k = g.Sum(item => extractValue(item.Field<string>(2), 17)),
+                        QuantityC2k = g.Sum(item => extractValue(item.Field<string>(2), 18)),
+                        QuantityC1k = g.Sum(item => extractValue(item.Field<string>(2), 19)),
+                        QuantityC500 = g.Sum(item => extractValue(item.Field<string>(2), 20)),
+                        QuantityC200 = g.Sum(item => extractValue(item.Field<string>(2), 21))
+
+                    };
+
+                foreach (var customer in result)
+                {
+
+                    double totalCounterfeitAmount = customer.CounterfeitAmount;//str2Money(row.Field<string>(m_res_man.GetString("CounterfeitAmount", m_cul)));
+                    if (totalCounterfeitAmount > 0)
+                    {
+                        string strActualAmount = "" + customer.ActualAmount;// row.Field<string>(m_res_man.GetString("ActualAmount", m_cul));
+
+                        string strTenantName = customer.CustomerName;
+
+                        //if (ribbonControlMain.SelectedPage.Name == "ribbonPageAeonVN")
+                        //    strTenantName = row.Field<string>(m_res_man.GetString("CashierName", m_cul));
                         //else
                         //    strTenantName = row.Field<string>(m_res_man.GetString("CustomerName", m_cul));
                         string strTenantCode = customer.CustomerID;//row.Field<string>(m_res_man.GetString("CustomerID", m_cul));
@@ -969,6 +2220,7 @@ namespace AutoGeneratingReports.ViewModel
                 HelperClass.writeExceptionToDebugger(ex);
             }
         }
+        #region Init GridAM
         public void InitGridAM()
         {
             try
@@ -990,8 +2242,6 @@ namespace AutoGeneratingReports.ViewModel
                 DataTableAM.Columns.Add("Cập nhật gần nhất");
                 DataTableAM.Columns.Add("Thời gian cập nhật");
                 DataTableAM.Columns.Add("Đã kiểm tra", typeof(bool));
-                
-
 
             }
             catch(Exception ex)
@@ -1000,6 +2250,9 @@ namespace AutoGeneratingReports.ViewModel
             }
             
         }
+        #endregion Init GridAM
+
+        #region Init GridAV
         public void InitGridAV()
         {
             try
@@ -1020,7 +2273,7 @@ namespace AutoGeneratingReports.ViewModel
                 DataTableAV.Columns.Add("Cập nhật gần nhất");
                 DataTableAV.Columns.Add("Thời gian cập nhật");
                 DataTableAV.Columns.Add("Đã kiểm tra", typeof(bool));
-                
+                DataTableAV.Columns.Add("CustomerID");
                 //DataTableAV.Columns[0].ColumnMapping = MappingType.Hidden;
             }
             catch(Exception e)
@@ -1028,6 +2281,8 @@ namespace AutoGeneratingReports.ViewModel
                 HelperClass.writeExceptionToDebugger(e);
             }
         }
+        #endregion Init GridAV
+
         private void insertGridviewAeonTable(string txtSearch, AutoGenReportDbContext _contextGen)
         {
             try
@@ -1304,9 +2559,6 @@ namespace AutoGeneratingReports.ViewModel
                 dr[15] = deposit.p.Checked == "T" ? true : false;
                 
 
-
-
-
                 // if (m_aeonMallDB.isExist(deposit.p.CustomerID))
                 DataTableAM.Rows.Add(dr);
 
@@ -1343,7 +2595,7 @@ namespace AutoGeneratingReports.ViewModel
                     dr[2] = depositVN.p.Quantity;//Quantity
                     dr[3] = DateTime.ParseExact(depositVN.p.DepositDate, "yyyyMMddHHmmss", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");//Date
                     dr[4] = DateTime.ParseExact(depositVN.p.SaleDate, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");//SaleDate
-                    dr[5] = depositVN.q.PosName;//CustomerID                   
+                    dr[5] = depositVN.q.PosName;//CasherName                   
                     dr[6] = depositVN.p.BarcodeID;//BarcodeID
                     dr[7] = depositVN.p.DeclaredAmount;//Declared amount
                     dr[8] = depositVN.p.ActualAmount;//Actual amount
@@ -1353,7 +2605,8 @@ namespace AutoGeneratingReports.ViewModel
                     dr[12] = depositVN.p.LastEdit;//Quantity
                     dr[13] = DateTimeString2String(depositVN.p.TimeTag);//ID
                     dr[14] = depositVN.p.Checked == "T" ? true : false;
-                    
+                    dr[15] = depositVN.p.CustomerID; //CustomerID
+
 
                     // if (m_aeonMallDB.isExist(deposit.p.CustomerID))
                     DataTableAV.Rows.Add(dr);                                      
@@ -1361,7 +2614,7 @@ namespace AutoGeneratingReports.ViewModel
 
             }
         }
-        string DateTimeString2String(string DatetimeYYYYMMDDHHMMSS)
+        public string DateTimeString2String(string DatetimeYYYYMMDDHHMMSS)
         {
             return DateTime.ParseExact(DatetimeYYYYMMDDHHMMSS, "yyyyMMddHHmmss", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");//Date
         }

@@ -23,36 +23,43 @@
             <Ribbon ItemsSource="{Binding tabs}" Background="LightGray" x:Name="RibbonWin" SelectedIndex ="{Binding SelectedIndex}" Margin="0,0,-0.4,0" Height="150" VerticalAlignment="Top" Grid.RowSpan="1" SelectionChanged="RibbonWin_SelectionChanged">
                 <RibbonTab ItemsSource="{Binding TabAeonMall}" Height="110" x:Name="TabAeonMall" Header="AEON MALL" KeyTip="H">
                     <RibbonGroup x:Name="XuatBaoCaoAeonMall">
-                        <RibbonButton Visibility="{Binding btn_Enable, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Command="{Binding ExportAeonMall}" LargeImageSource="Images\Login\Export1.png" Label="Chiết xuất báo cáo" KeyTip="V">
-                            <!--<RibbonMenuItem ImageSource="Images\Login\User.png" Header="Keep Text Only" KeyTip="T"/>
-                        <RibbonMenuItem ImageSource="Images\Login\User.png" Header="Paste Special..." KeyTip="S"/>-->
+                        <RibbonButton Visibility="{Binding VXuatBaoCaoAeonMall, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      Command="{Binding ExportAeonMall}"
+                                      LargeImageSource="Images\Login\Export1.png" 
+                                      Label="Chiết xuất báo cáo" 
+                                      KeyTip="V">
                         </RibbonButton>
                     </RibbonGroup>
                     <RibbonGroup x:Name="SinhBangKiemQuyTongAM">
-                        <RibbonButton LargeImageSource="Images\Login\List.png" 
-                                      Label="Sinh bảng kiểm quỹ tổng" 
+                        <RibbonButton LargeImageSource="Images\Login\List.png"
+                                      Label="Sinh bảng kiểm quỹ tổng"
                                       KeyTip="V"
-                                      Command="{Binding SinhBangKiemQuyTongAM}"/>
+                                      Command="{Binding SinhBangKiemQuyTongAM}"
+                                      Visibility="{Binding VSinhBangKiemQuyTongAM}"/>
                     </RibbonGroup>
                     <RibbonGroup x:Name="SinhBangKiemQuyChoTungNguoiAM">
                         <RibbonButton LargeImageSource="Images\Login\Chart.png" 
                                       Label="Sinh bảng kiểm quỹ cho từng người kiểm đếm" 
                                       KeyTip="V"
-                                      Command="{Binding SinhBangKiemQuyChoKiemDemAM}"/>
+                                      Command="{Binding SinhBangKiemQuyChoKiemDemAM}"
+                                      Visibility="{Binding VSinhBangKiemQuyChoKiemDemAM}"/>
                     </RibbonGroup>
                     <!-- Home/Colors group-->
                     <RibbonGroup x:Name="SaoChepAeonMall">
                         <RibbonButton LargeImageSource="Images\Login\Copy.png" 
-                                      Label="Sao chép từ cột sau kiểm kê đến cột khai báo" 
+                                      Label="Sao chép từ cột sau kiểm kê đến cột khai báo"
                                       KeyTip="V"
-                                      Command="{Binding SaoChepCotAM}"
+                                       Command="{Binding SaoChepCotAMz}"
+                                      Visibility="{Binding VSaoChepCotAM}"
+                                      Click="ClickAMSaoChep"
                                       />
                     </RibbonGroup>
                     <RibbonGroup x:Name="XoaTatCaDauKiemTra">
                         <RibbonButton LargeImageSource="Images\Login\Reset.png" 
                                       Label="Xóa tất cả dấu kiểm tra" 
                                       KeyTip="V"
-                                      Command="{Binding ResetCheckAM}"/>
+                                      Command="{Binding ResetCheckAM}"
+                                      Visibility="{Binding VResetCheckAM}"/>
                     </RibbonGroup>
                     <RibbonGroup Width="160">
                         <TextBlock>Từ ngày bán hàng</TextBlock>
@@ -78,28 +85,34 @@
                 <RibbonTab  ItemsSource="{Binding TabAeonVN}" Height="110" Header="AEON VN" KeyTip="H">
                     <RibbonGroup x:Name="XuatBaoCaoAeonVn">
                         <RibbonButton LargeImageSource="Images\Login\Export1.png" 
-                                      Label="Chiết xuất báo cáo" KeyTip="V"/>
+                                      Label="Chiết xuất báo cáo" KeyTip="V"
+                                      Command="{Binding XuatBaoCaoAeonVn}"
+                                      Visibility="{Binding VXuatBaoCaoAeonVn}"/>
                     </RibbonGroup>
                     <RibbonGroup x:Name="SinhBangKiemQuyTong">
                         <RibbonButton LargeImageSource="Images\Login\List.png" 
                                       Label="Sinh bảng kiểm quỹ tổng" KeyTip="V"
-                                      Command="{Binding SinhBangKiemQuyTongAV}"/>
+                                      Command="{Binding SinhBangKiemQuyTongAV}"
+                                      Visibility="{Binding VSinhBangKiemQuyTongAV}"/>
                     </RibbonGroup>
                     <RibbonGroup x:Name="SinhBangKiemQuyChoTungNguoi">
                         <RibbonButton LargeImageSource="Images\Login\Chart.png" 
                                       Label="Sinh bảng kiểm quỹ cho từng người kiểm đếm" KeyTip="V"
-                                      Command="{Binding SinhBangKiemQuyChoKiemDemAV}"/>
+                                      Command="{Binding SinhBangKiemQuyChoKiemDemAV}"
+                                      Visibility="{Binding VSinhBangKiemQuyChoKiemDemAV}"/>
                     </RibbonGroup>
                     <RibbonGroup x:Name="SaoShepAeonVN">
                         <RibbonButton LargeImageSource="Images\Login\Copy.png" 
                                       Label="Sao chép từ cột sau kiểm kê đến cột khai báo" KeyTip="V" 
-                                      Command="{Binding SaoChepCotAV}"
-                                      />
+                                      Command="{Binding SaoChepCotAVz}"
+                                      Visibility="{Binding VSaoChepCotAV}"
+                                      Click="ClickAVSaoChep"/>
                     </RibbonGroup>
                     <RibbonGroup x:Name="XoaTatCaAeonVn">
                         <RibbonButton LargeImageSource="Images\Login\Reset.png" 
                                       Label="Xóa tất cả dấu kiểm tra" KeyTip="V"
-                                      Command="{Binding ResetCheckAV}"/>
+                                      Command="{Binding ResetCheckAV}"
+                                      Visibility="{Binding VResetCheckAV}"/>
                     </RibbonGroup>
                     <RibbonGroup Width="160">
                         <TextBlock>Từ ngày bán hàng</TextBlock>
@@ -135,13 +148,13 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Margin="5" Grid.Row="0" Grid.Column="0">Nơi chứa dữ liệu</TextBlock>
-                            <TextBox FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5"  Width="200" Grid.Row="0" Grid.Column="1" Text="{Binding barEditItemInputFolder ,UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox FontSize="9.5" Margin="2" Height="22" Background="LightGray" IsReadOnly="True" BorderThickness="0.5"  Width="200" Grid.Row="0" Grid.Column="1" Text="{Binding barEditItemInputFolder ,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <TextBlock Margin="5" Grid.Row="1" Grid.Column="0">Nơi xuất dữ liệu AeonMall</TextBlock>
-                            <TextBox x:Name="txtAM" FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5" Width="200" Grid.Row="1" Grid.Column="1" Text="{Binding NoiXuatAeonMall, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="txtAM" FontSize="9.5" Margin="2" Background="LightGray" IsReadOnly="True" Height="22" BorderThickness="0.5" Width="200" Grid.Row="1" Grid.Column="1" Text="{Binding NoiXuatAeonMall, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <TextBlock Margin="5" Grid.Row="2" Grid.Column="0">Nơi xuất dữ liệu Viettinbank</TextBlock>
-                            <TextBox FontSize="9.5" Margin="2" Height="22" BorderThickness="0.5" Width="200" Grid.Row="2" Grid.Column="1" Text="{Binding barEditItemOutputAVFolder, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox FontSize="9.5" Margin="2" Height="22" Background="LightGray" IsReadOnly="True" BorderThickness="0.5" Width="200" Grid.Row="2" Grid.Column="1" Text="{Binding barEditItemOutputAVFolder, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
 
                     </RibbonGroup>
@@ -193,10 +206,20 @@
                         </Grid>
                     </RibbonGroup>
                     <RibbonGroup  x:Name="DangXuat">
-                        <RibbonButton Margin="5" Width="70" Command="{Binding btnDangXuat}" x:Name="btnDangXuat" LargeImageSource="Images\Login\Logout1.png" Label="Đăng xuất" KeyTip="V"/>
+                        <RibbonButton Visibility="{Binding V}"
+                                      Margin="5" Width="70"
+                                      Command="{Binding btnDangXuat}"
+                                      x:Name="btnDangXuat" 
+                                      LargeImageSource="Images\Login\Logout1.png" 
+                                      Label="Đăng xuất" KeyTip="V"/>
                     </RibbonGroup>
                     <RibbonGroup  x:Name="ThayDoiMatKhau">
-                        <RibbonButton  Margin="5" Width="70" Command="{Binding btnThayMatKhau}" x:Name="btnThayMatKhau" LargeImageSource="Images\Login\User2.png" Label="Đổi mật khẩu" KeyTip="V"/>
+                        <RibbonButton Visibility="{Binding VThayDoiMatKhau}" 
+                                      Margin="5" Width="70" 
+                                      Command="{Binding btnThayMatKhau}" 
+                                      x:Name="btnThayMatKhau" 
+                                      LargeImageSource="Images\Login\User2.png"
+                                      Label="Đổi mật khẩu" KeyTip="V"/>
                     </RibbonGroup>
                 </RibbonTab>
                 <RibbonTab  ItemsSource="{Binding TabQuanLyNguoiDung}" 
@@ -207,7 +230,8 @@
                                       x:Name="DanhSachNguoiDung" 
                                       LargeImageSource="Images\Login\ListUser.png" 
                                       Label="Danh sách người dùng" 
-                                      KeyTip="V"/>
+                                      KeyTip="V"
+                                      Visibility="{Binding VbtnDsNguoiDung}"/>
                     </RibbonGroup>
                 </RibbonTab>
                 <RibbonTab  Header="CSDL KHÁCH HÀNG" KeyTip="H">
@@ -215,21 +239,24 @@
                         <RibbonButton Command="{Binding btnDsQuayAv}" 
                                       x:Name="DsQuayAv" 
                                       LargeImageSource="Images\Login\Shop1.png" 
-                                      Label="Danh sách quầy AV" KeyTip="V"/>
+                                      Label="Danh sách quầy AV" KeyTip="V"
+                                      Visibility="{Binding VbtnDsQuayAv}"/>
                     </RibbonGroup>
                     <RibbonGroup>
                         <RibbonButton Command="{Binding btnDsNguoiGiamSatAv}"
                                       x:Name="NguoiDamSatAv" 
                                       LargeImageSource="Images\Login\User.png" 
                                       Label="Người giám sát AV" 
-                                      KeyTip="V"/>
+                                      KeyTip="V"
+                                      Visibility="{Binding VbtnDsNguoiGiamSatAv}"/>
                     </RibbonGroup>
                     <RibbonGroup >
                         <RibbonButton Command="{Binding btnDanhKHAeonMall}" 
                                       x:Name="AeonMall" 
                                       LargeImageSource="Images\Login\Shop2.png" 
                                       Label="AeonMall" 
-                                      KeyTip="V"/>
+                                      KeyTip="V"                                 
+                                      Visibility="{Binding VbtnDanhKHAeonMall}"/>
                     </RibbonGroup>
                 </RibbonTab>
             </Ribbon>
@@ -302,7 +329,7 @@
                     <TextBlock Text="{Binding Content, RelativeSource=
                                          {RelativeSource Mode=TemplatedParent}}"/>
 
-                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm" 
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Nhập nội dung tìm kiếm"
                              Name="txtSearch" Text="{Binding txtTimKiem,UpdateSourceTrigger=PropertyChanged}"  
                              BorderThickness="1"  Width="200" Height="30"/>
                     <Button Command="{Binding btnTimKiemAV}" 
@@ -310,7 +337,7 @@
                             Margin="10" Height="30">Tìm kiếm</Button>
                     <Button Command="{Binding btnXoa}" 
                             Background="LightGray" 
-                            Margin="5" 
+                            Margin="5"
                             Height="30" 
                             RenderTransformOrigin="1.238,0.566">Xóa</Button>
                 </StackPanel>

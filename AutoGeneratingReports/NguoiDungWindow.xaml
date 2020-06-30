@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoGeneratingReports"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="AutoGeneratingReports.NguoiDungWindow"
         mc:Ignorable="d"
-        
+        Icon="\Images\Login\User2.png"
         Title="Thêm mới người dùng" Height="600" Width="800"
     
     >
